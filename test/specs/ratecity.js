@@ -56,19 +56,19 @@ describe('RateCity website', function() {
   //   })
   // })
 
-  describe('Savings accounts', function () {
-    describe('Search Page', function () {
-      it('Should render at least 10 products', function () {
-        browser.url('http://www.ratecity.com.au/savings-accounts?utf8=%E2%9C%93&q%5Bamount%5D=5000&q%5Bterm%5D=60&q%5Baccount_type%5D=any&commit=Find+an+account');
-        expect(browser.getText('td.description').length).to.be.at.least(10)
-      })
-    })
+  // describe('Savings accounts', function () {
+  //   describe('Search Page', function () {
+  //     it('Should render at least 10 products', function () {
+  //       browser.url('http://www.ratecity.com.au/savings-accounts?utf8=%E2%9C%93&q%5Bamount%5D=5000&q%5Bterm%5D=60&q%5Baccount_type%5D=any&commit=Find+an+account');
+  //       expect(browser.getText('td.description').length).to.be.at.least(10)
+  //     })
+  //   })
 
-    describe('Product Page', function () {
-      it('Should render the name of the product on the page', function () {
-        browser.url('http://www.ratecity.com.au/savings-accounts/bank-australia/bonus-saver?q%5Bamount%5D=5000&q%5Bterm%5D=60&source=ratecity')
-        expect(browser.getText('h1.product-title')).to.eq('Bonus Saver')
-      })
-    })
-  })
+  //   describe('Product Page', function () {
+  //     it('Should render the name of the product on the page', function () {
+  //       browser.url('http://www.ratecity.com.au/savings-accounts/bank-australia/bonus-saver?q%5Bamount%5D=5000&q%5Bterm%5D=60&source=ratecity')
+  //       expect(browser.getText('h1.product-title')).to.eq('Bonus Saver')
+  //     })
+  //   })
+  // })
 });
