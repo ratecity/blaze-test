@@ -29,13 +29,9 @@ function getFilesFromLastHour () {
 }
 
 app.get('/runs/*', function (req, res) {
-  var contents = fs.readFileSync('.' + req.url, 'utf8')
-  res.send(contents)
+  var contents = fs.readFileSync('.' + req.url, 'ascii')
+  res.send(contents.replace(/\n/g, "<br/>").replace(/\[[0-9];*[0-9]*m/g, ''))
 })
-
-// app.get('/main.css', function (req, res) {
-//   res.send(".bad {color: red}; .good {color: green")
-// })
 
 app.get('/', function (req, res) {
   str = '<html>';
