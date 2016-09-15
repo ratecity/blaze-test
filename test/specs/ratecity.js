@@ -1,6 +1,8 @@
 var assert = require('assert');
 var expect = require('chai').expect;
 
+browser.setViewportSize({width: 1400, height: 1000})
+
 describe('RateCity website', function() {
   describe('Homepage', function() {
     it('Should have the correct page title', function () {
