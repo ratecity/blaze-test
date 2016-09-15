@@ -20,7 +20,7 @@ function getFilesFromLastHour () {
    });
   return files.map(function(file) { return path + file }).map(function(file) {
     var contents = fs.readFileSync(file, 'utf8')
-    if (contents.match(/11 passing/g)) {
+    if (contents.match(/9 passing/g)) {
       return {result: 'passed', name: file}
     } else {
       return {result: 'failed', name: file}
