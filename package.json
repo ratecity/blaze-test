@@ -19,6 +19,7 @@
     "wdio-mocha-framework": "^0.4.3"
   },
   "dependencies": {
-    "webdriverio": "^4.2.15"
+    "webdriverio": "^4.2.15",
+    "chai": "^3.5.0"
   }
 }
