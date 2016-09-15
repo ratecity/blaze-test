@@ -33,10 +33,18 @@ app.get('/runs/*', function (req, res) {
   res.send(contents)
 })
 
+// app.get('/main.css', function (req, res) {
+//   res.send(".bad {color: red}; .good {color: green")
+// })
+
 app.get('/', function (req, res) {
   str = '<html>';
   getFilesFromLastHour().forEach(function(file) {
-    str += '<a href="' + file.name + '">' + file.name + '</a><br/>'
+    if (file.result === 'passed') {
+      str += '<a style="color: green" href="' + file.name + '">' + file.name + '</a><br/>'
+    } else {
+      str += '<a style="color: red" href="' + file.name + '">' + file.name + '</a><br/>'
+    }
   })
   res.send(str)
 });
