@@ -38,21 +38,21 @@ describe('RateCity website', function() {
     })
   })
 
-  describe('Credit Cards', function () {
-    describe('Search Page', function () {
-      it('Should render at least 10 products', function () {
-        browser.url('http://www.ratecity.com.au/credit-cards/search');
-        expect(browser.getText('td.product-name').length).to.be.at.least(10)
-      })
-    })
+  // describe('Credit Cards', function () {
+  //   describe('Search Page', function () {
+  //     it('Should render at least 10 products', function () {
+  //       browser.url('http://www.ratecity.com.au/credit-cards/search');
+  //       expect(browser.getText('td.product-name').length).to.be.at.least(10)
+  //     })
+  //   })
 
-    describe('Product Page', function () {
-      it('Should render the name of the product in the breadcrumbs', function () {
-        browser.url('http://www.ratecity.com.au/credit-cards/anz/low-rate')
-        expect(browser.getText('ol.breadcrumb > li.active')).to.eq('Low Rate')
-      })
-    })
-  })
+  //   describe('Product Page', function () {
+  //     it('Should render the name of the product in the breadcrumbs', function () {
+  //       browser.url('http://www.ratecity.com.au/credit-cards/anz/low-rate')
+  //       expect(browser.getText('ol.breadcrumb > li.active')).to.eq('Low Rate')
+  //     })
+  //   })
+  // })
 
   describe('Savings accounts', function () {
     describe('Search Page', function () {
