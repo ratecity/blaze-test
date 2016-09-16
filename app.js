@@ -42,9 +42,9 @@ app.get('/previous/:month/:day/:hour', function (req, res) {
   str = '<html>';
   getFilesFromHour(path).forEach(function(file) {
     if (file.result === 'passed') {
-      str += '<a style="color: green" href="' + file.name + '">' + file.name + '</a><br/>'
+      str += '<a style="color: green" href="/' + file.name + '">' + file.name + '</a><br/>'
     } else {
-      str += '<a style="color: red" href="' + file.name + '">' + file.name + '</a><br/>'
+      str += '<a style="color: red" href="/' + file.name + '">' + file.name + '</a><br/>'
     }
   })
   res.send(str)
@@ -54,9 +54,9 @@ app.get('/', function (req, res) {
   str = '<html>';
   getFilesFromLastHour().forEach(function(file) {
     if (file.result === 'passed') {
-      str += '<a style="color: green" href="' + file.name + '">' + file.name + '</a><br/>'
+      str += '<a style="color: green" href="/' + file.name + '">' + file.name + '</a><br/>'
     } else {
-      str += '<a style="color: red" href="' + file.name + '">' + file.name + '</a><br/>'
+      str += '<a style="color: red" href="/' + file.name + '">' + file.name + '</a><br/>'
     }
   })
   res.send(str)
