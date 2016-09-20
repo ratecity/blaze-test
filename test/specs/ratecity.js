@@ -4,12 +4,12 @@ var expect = require('chai').expect;
 browser.setViewportSize({width: 1400, height: 1000})
 
 describe('RateCity website', function() {
-  describe('Homepage', function() {
-    it('Should have the correct page title', function () {
-        browser.url('http://www.ratecity.com.au');
-        assert.equal(browser.getTitle(), 'Interest Rates Comparison, Financial News & Resources | Compare & Save @ RateCity');
-    });
-  })
+  // describe('Homepage', function() {
+  //   it('Should have the correct page title', function () {
+  //       browser.url('http://www.ratecity.com.au');
+  //       assert.equal(browser.getTitle(), 'Interest Rates Comparison, Financial News & Resources | Compare & Save @ RateCity');
+  //   });
+  // })
 
   describe('Home Loans', function () {
     describe('Search Page', function () {
