@@ -16,6 +16,7 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
+    services: ['selenium-standalone'],
     //
     // ============
     // Capabilities
