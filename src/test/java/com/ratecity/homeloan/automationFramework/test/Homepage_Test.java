@@ -22,6 +22,7 @@ public class Homepage_Test extends BaseClass {
 	  public void fn_VerifyHomeLoanLandingPage() throws  Exception{
 		 
 		  logger = report.startTest("HomeLoanLandingPage");
+		  BaseClass.getDriver().navigate().to("https://staging.ratecity.com.au/home-loans");
 		   Utility.GoToSleep(2000);
 		if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Middle")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
 			 
@@ -44,7 +45,6 @@ public class Homepage_Test extends BaseClass {
 	  public void fn_toVerifyComparefunctionalityWith2Banks() throws Exception{
 		
 		 logger = report.startTest("CompareButtonFunctionality");
-		 BaseClass.getDriver().navigate().to("https://staging.ratecity.com.au/home-loans/mortgage-rates");
 		 Utility.GoToSleep(2000);
 		 HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(2);
 		 HomeLoanMortgageRates.fn_ClickOnCompareButton();
@@ -59,5 +59,24 @@ public class Homepage_Test extends BaseClass {
 			 }
 			
 		 }
-		}  
+		}
+	
+	@Test(priority=3)
+	 public void fn_toVerifyCompareWithBig4Button() throws Exception{
+		
+		 logger = report.startTest("CompareWithBig4ButtonFunctionality");
+		 HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(1);
+		 HomeLoanMortgageRates.fn_ClickOnComparewithBig4Button();
+		 if(HomeLoanComparisonpage.fn_VerifyHomeLoanText()){
+			if(HomeLoanComparisonpage.fn_VerifyComparisontable()==6){
+				logger.log(LogStatus.PASS, "INTO METHOD==> CompareWithBig4Button Functionality :  Working Successfully!! :)");
+				 Assert.assertTrue(true); 
+			}
+			else{
+				 logger.log(LogStatus.FAIL, "INTO METHOD==> CompareWithBig4 Functionality :  Not working Successfully!! (: ");
+				 Assert.assertTrue(false);
+			 }
+			
+		 }
+		}
  }
