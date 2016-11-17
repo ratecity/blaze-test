@@ -42,7 +42,7 @@ public static boolean fn_verifytitle(){
 public static int fn_VerifyComparisontable() throws Exception{
 	List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser()
 			.getobjectLocator("HomeLoan.Compareblocks"));
-	for (WebElement webElement : we) {
+	for (WebElement webElement : we.subList(1, we.size())) {
 		Utility.highlightElementBorder(webElement);
 	}
 	return we.size();
