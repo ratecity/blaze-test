@@ -5,3 +5,9 @@ errorShots/
 runs/
 nohup.out
 ScreenShots
+.classpath
+.metadata/
+.project
+.settings/
+target/
+
