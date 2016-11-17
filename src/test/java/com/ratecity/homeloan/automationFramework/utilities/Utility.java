@@ -15,7 +15,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.interactions.Actions;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -42,6 +42,27 @@ public class Utility {
 			FileUtils.copyFile(oScnShot, oDest);
 		} catch (IOException e) {System.out.println(e.getMessage());}
 		return dest;
+	}
+	
+	/**
+	 * 
+	 * @param prev_value
+	 * @param updated_value
+	 * @return
+	 */
+	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ){
+		boolean flag  = false;
+		
+		if(Integer.parseInt(fn_ModifyString(prev_value))
+				< Integer.parseInt(fn_ModifyString(updated_value))){
+			flag=true;
+		}
+		return flag;
+	}
+	
+	public static String fn_ModifyString(String value){
+		value = value.replace("$","");
+		return value;
 	}
 
 	/**
@@ -191,6 +212,26 @@ public class Utility {
 			BaseClass.logger.log(LogStatus.INFO,"*****Error in selecting a checkbox!!! *****"
 					+ e.getMessage());
 		}
+	}
+	/**
+	 * 
+	 * @param webelement
+	 * @param movetoValue
+	 * @throws Exception
+	 */
+	public static void dragAnddropBy(WebElement webelement,
+			int movetoValue) throws Exception   {
+		try{
+			BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> dragAnddropBy");
+			 Actions move = new Actions(BaseClass.getDriver());
+			 move.dragAndDropBy(webelement, movetoValue, 0).click();
+			 move.build().perform();
+			 Utility.GoToSleep(2000);
+			 BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> dragAnddropBy : Scroll Moved Successfully!!!!");
+		   }catch(Exception e){
+			   BaseClass.logger.log(LogStatus.ERROR,"INTO Method ==> dragAnddropBy"+e.getMessage());
+			   throw new Exception("::::::::::::::::::::::::" + e.getMessage());
+		   }
 	}
 
 	/**
