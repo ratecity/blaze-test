@@ -31,12 +31,23 @@ public class Utility {
 	 * @param screenshotName
 	 * @return
 	 */
-	public static String CaptureScreen(WebDriver driver, String screenshotName)
-	{
+	public static String CaptureScreen(WebDriver driver, String screenshotName){
+	
+		String dest=null;
 		BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> CaptureScreenShot and Return path");
 		TakesScreenshot oScn = (TakesScreenshot) BaseClass.getDriver();
 		File oScnShot = oScn.getScreenshotAs(OutputType.FILE);
-		String dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
+		File file = new File(System.getProperty("user.dir")+File.separator+"ScreenShots");
+		if (!file.exists()) {
+            if (file.mkdir()) {
+            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
+            } else {
+               BaseClass.logger.log(LogStatus.ERROR, "INTO Method ==> Failed to create directory in specified position");
+            }
+		} 
+            else{
+            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";	
+            }
 		File oDest = new File(dest);
 		try {
 			FileUtils.copyFile(oScnShot, oDest);
