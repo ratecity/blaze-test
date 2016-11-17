@@ -59,6 +59,14 @@ public class BaseClass {
 	@BeforeSuite
 	public void testReport(){  
 		timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		File file = new File(System.getProperty("user.dir")+File.separator+"Reports");
+		if (!file.exists()) {
+            if (file.mkdir()) {
+            	report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
+            } else {
+               BaseClass.logger.log(LogStatus.ERROR, "INTO Method Test Report ==> Failed to create directory in specified position");
+            }
+		}else
 		report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
 		
 	}
