@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import org.apache.commons.io.FileUtils;
@@ -53,6 +55,28 @@ public class Utility {
 			FileUtils.copyFile(oScnShot, oDest);
 		} catch (IOException e) {System.out.println(e.getMessage());}
 		return dest;
+	}
+	
+	/**
+	 * 
+	 * @param url
+	 * @return
+	 * @throws Exception
+	 */
+	public static boolean isLinkBroken(URL url) throws Exception
+	{
+
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		try{
+		     connection.connect();
+		     if(connection.getResponseMessage().equalsIgnoreCase("OK") && connection.getResponseCode()==200 ){
+		    	 return true;
+		     }
+		}catch(Exception exp)
+		{
+			
+		}  				
+      return false;
 	}
 	
 	/**

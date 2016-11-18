@@ -1,6 +1,7 @@
 package com.ratecity.homeloan.automationFramework.pages;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -102,6 +103,11 @@ public class HomeLoanMortgageRates {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
 	public static boolean fn_hasArticles() throws IOException{
 		boolean flag=false;
 		if(Utility.isElementPresent(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate.Articles"))){
@@ -180,6 +186,11 @@ public class HomeLoanMortgageRates {
        return flag;
 	}
 	
+	/**
+	 * 
+	 * @param chkboxtype
+	 * @throws IOException
+	 */
 	public static void fn_ClickOnInterestRateChkBox(String chkboxtype) throws IOException{
 		
 		WebElement ele=null;
@@ -198,6 +209,25 @@ public class HomeLoanMortgageRates {
  		 }
 	}
 	
+	public static void fn_HomeLoanTopLinks() throws Exception{
+		List<WebElement> homeloanType =null;
+		homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
+					getobjectLocator("HomeLoan.LoanTypes"));
+		for(int i=0;i<homeloanType.size()-1;i++){
+			 if(!Utility.isLinkBroken(new URL(homeloanType.get(i).getAttribute("href")))){
+				  BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is not working");
+				   break;
+			   }
+			 else{ 
+				   BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is landed Successfully!!");
+				   homeloanType.get(i).click();
+				   Utility.GoToSleep(2000);
+				   BaseClass.getDriver().navigate().back();
+			   }
+			 homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
+						getobjectLocator("HomeLoan.LoanTypes"));
+		}
+	}
 	
 	
 		
