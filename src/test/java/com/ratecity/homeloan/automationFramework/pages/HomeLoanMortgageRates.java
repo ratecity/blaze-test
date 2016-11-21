@@ -32,10 +32,10 @@ public class HomeLoanMortgageRates {
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate"));
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
-			we.get(i).click();
+			Utility.selectcheckbox(we.get(i));
+			//we.get(i).click();
 			Utility.GoToSleep(1000);
 		}
-		
 		
 	}
 	public static HomeLoanComparisonpage fn_ClickOnCompareButton() throws Exception{
@@ -208,39 +208,5 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_ClickOnInterestRateChkBox : Successfully Clicked on Fixed - 1 year CheckBox!!");
  		 }
 	}
-	
-	public static void fn_HomeLoanTopLinks() throws Exception{
-		List<WebElement> homeloanType =null;
-		homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
-					getobjectLocator("HomeLoan.LoanTypes"));
-		for(int i=0;i<homeloanType.size()-1;i++){
-			 if(!Utility.isLinkBroken(new URL(homeloanType.get(i).getAttribute("href")))){
-				  BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is not working");
-				   break;
-			   }
-			 else{ 
-				   BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is landed Successfully!!");
-				   homeloanType.get(i).click();
-				   Utility.GoToSleep(2000);
-				   BaseClass.getDriver().navigate().back();
-			   }
-			 homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
-						getobjectLocator("HomeLoan.LoanTypes"));
-		}
-	}
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
+}
 

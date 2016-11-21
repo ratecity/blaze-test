@@ -275,7 +275,7 @@ public class Utility {
 	 */
 	public static void selectcheckbox(WebElement we) {
 		try {
-			if (!we.isSelected()) {
+			if (we.isDisplayed() && !we.isSelected()) {
 				we.click();
 				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is selected now*****");
 			} else {

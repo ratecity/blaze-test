@@ -29,7 +29,14 @@ public class Homepage_Test extends BaseClass {
 		  logger = report.startTest("HomeLoanLandingPage");
 		  BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans?nav=home-loans");
 		   Utility.GoToSleep(2000);
-		   HomeLoanMortgageRates.fn_HomeLoanTopLinks();
+		   HomeLoanLandingpage.fn_HomeLoanTopLinks();
+		   HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(5);
+		   if(HomeLoanLandingpage.fn_CountvaluesOnComparebar()==5){
+			   if(HomeLoanLandingpage.fn_isCompareButtonVisible() && HomeLoanLandingpage.fn_isClearButtonvisible()){
+				 HomeLoanLandingpage.fn_ClickOnClearButton();  
+				  HomeLoanLandingpage.fn_CheckBrowseMoreLink();
+			   }
+		   }
 		   
 		  if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Middle")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
 			 
