@@ -1,5 +1,10 @@
 package com.ratecity.homeloan.automationFramework.test;
 
+import java.net.URL;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,9 +27,21 @@ public class Homepage_Test extends BaseClass {
 	  public void fn_VerifyHomeLoanLandingPage() throws  Exception{
 		 
 		  logger = report.startTest("HomeLoanLandingPage");
-		  BaseClass.getDriver().navigate().to("https://staging.ratecity.com.au/home-loans");
+		  BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans?nav=home-loans");
 		   Utility.GoToSleep(2000);
-		if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Middle")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
+		   HomeLoanLandingpage.fn_HomeLoanTools();
+		   HomeLoanLandingpage.fn_HomeLoanNews();
+		   HomeLoanLandingpage.fn_ClickonMoreHomeLoanNews();
+		   HomeLoanLandingpage.fn_HomeLoanTopLinks();
+		   HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(5);
+		   if(HomeLoanLandingpage.fn_CountvaluesOnComparebar()==5){
+			   if(HomeLoanLandingpage.fn_isCompareButtonVisible() && HomeLoanLandingpage.fn_isClearButtonvisible()){
+				 HomeLoanLandingpage.fn_ClickOnClearButton();  
+				  HomeLoanLandingpage.fn_CheckBrowseMoreLink();
+			   }
+		   }
+		   
+		  if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Middle")&& HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
 			 
 			  if(HomeLoanLandingpage.fn_CheckIfRateTableHas6Records("HomeLoan.RateRecordsContainer","HomeLoan.RateRecords")){
 				  if(HomeLoanLandingpage.fn_CheckIfhasArticles("HomeLoan.articles")){
@@ -115,5 +132,6 @@ public class Homepage_Test extends BaseClass {
 			   Assert.assertTrue(false);
 		   }
 	  }
+	 
 	
  }
