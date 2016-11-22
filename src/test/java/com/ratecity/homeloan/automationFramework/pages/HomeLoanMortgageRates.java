@@ -1,6 +1,7 @@
 package com.ratecity.homeloan.automationFramework.pages;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -31,10 +32,10 @@ public class HomeLoanMortgageRates {
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate"));
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
-			we.get(i).click();
+			Utility.selectcheckbox(we.get(i));
+			//we.get(i).click();
 			Utility.GoToSleep(1000);
 		}
-		
 		
 	}
 	public static HomeLoanComparisonpage fn_ClickOnCompareButton() throws Exception{
@@ -102,6 +103,11 @@ public class HomeLoanMortgageRates {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
 	public static boolean fn_hasArticles() throws IOException{
 		boolean flag=false;
 		if(Utility.isElementPresent(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate.Articles"))){
@@ -180,6 +186,11 @@ public class HomeLoanMortgageRates {
        return flag;
 	}
 	
+	/**
+	 * 
+	 * @param chkboxtype
+	 * @throws IOException
+	 */
 	public static void fn_ClickOnInterestRateChkBox(String chkboxtype) throws IOException{
 		
 		WebElement ele=null;
@@ -197,20 +208,5 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_ClickOnInterestRateChkBox : Successfully Clicked on Fixed - 1 year CheckBox!!");
  		 }
 	}
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
+}
 
