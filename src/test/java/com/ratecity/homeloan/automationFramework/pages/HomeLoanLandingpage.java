@@ -5,16 +5,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.omg.PortableServer.POA;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebElement;
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
+import com.ratecity.homeloan.automationFramework.utilities.VerifyUrlUtils;
 import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
 import com.relevantcodes.extentreports.LogStatus;
 
-import net.sourceforge.htmlunit.corejs.javascript.ast.ThrowStatement;
 
 
 public class HomeLoanLandingpage {
@@ -315,13 +316,13 @@ public class HomeLoanLandingpage {
 							BaseClass.getDriver().switchTo().defaultContent();
 						}
 						else{
-					     	homeLoanTools.get(i).click();
-						    Utility.GoToSleep(1000);
-						    homeLoanTools.get(i).click();
+							homeLoanTools.get(i).click();
+							Utility.GoToSleep(1000);
+							homeLoanTools.get(i).click();
 						}
 					}
 				}
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -330,4 +331,88 @@ public class HomeLoanLandingpage {
 
 	}
 
+	public static void fn_PopularHomeLoan()throws IOException{
+		List<WebElement> popularHomeLoans=null;
+		popularHomeLoans = BaseClass.getDriver().findElements(new RespositoryParser()
+				.getobjectLocator("HomeLoan.PopularHomeLoanLinks"));
+		try{
+			for(int i=0;i<popularHomeLoans.size();i++){
+				
+				if(popularHomeLoans.get(i)!=null){
+					if(Utility.fn_VerifyURLStatus(popularHomeLoans.get(i).getAttribute("href"))){
+					String urlText = popularHomeLoans.get(i).getText();
+					popularHomeLoans.get(i).click();
+					VerifyUrlUtils.fn_VerifyTitle_PopularHomeLoans(urlText);
+					popularHomeLoans = BaseClass.getDriver().findElements(new RespositoryParser()
+							.getobjectLocator("HomeLoan.PopularHomeLoanLinks"));
+					}else{
+						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_PopularHomeLoan :"
+								+ popularHomeLoans.get(i).getText()+ " Link is not working!!"); 
+					}
+				}else{
+					BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_PopularHomeLoan : not having values inside collection");
+							 
+				}
+			}
+		}catch(Exception e){
+
+		}
+	}
+	public static void fn_CheckIfArticlesLinksAreWorking()throws IOException{
+		List<WebElement> articlesLinks=null;
+		articlesLinks = BaseClass.getDriver().findElements(new RespositoryParser()
+				.getobjectLocator("HomeLoan.Articles.Links"));
+		try{
+			for(int i=0;i<articlesLinks.size();i++){
+				if(articlesLinks.get(i)!=null){
+					if(Utility.fn_VerifyURLStatus(articlesLinks.get(i).getAttribute("href"))){
+						String urlText = articlesLinks.get(i).getText();
+						articlesLinks.get(i).click();
+						VerifyUrlUtils.fn_VerifyTitle_ArticlesLinks(urlText);
+						articlesLinks = BaseClass.getDriver().findElements(new RespositoryParser()
+								.getobjectLocator("HomeLoan.Articles.Links"));
+						}else{
+							BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckIfArticlesLinksAreWorking :"
+									+ articlesLinks.get(i).getText()+ " Link is not working!!"); 
+						}	
+					}else{
+						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckIfArticlesLinksAreWorking : not having values inside collection");
+						 
+					}
+			}
+		}catch(Exception e){
+
+		}
+	}
+
+	public static void fn_CheckCompany_ProductLink() throws IOException{
+		List<WebElement> companyProductLinks=null;
+		companyProductLinks=BaseClass.getDriver().findElements(new RespositoryParser()
+				.getobjectLocator("HomeLoan.Company_ProductsLink"));
+		try{
+			for(int i=0;i<companyProductLinks.size();i++){
+				System.out.println("Size@@@@" + companyProductLinks.size());
+				System.out.println("***********"+ companyProductLinks.get(i).getText());
+				if(companyProductLinks.get(i)!=null){
+					if(Utility.fn_VerifyURLStatus(companyProductLinks.get(i).getAttribute("href"))){
+						String urlText = companyProductLinks.get(i).getText();
+						System.out.println("URl_TEXT"+urlText);
+						companyProductLinks.get(i).click();
+						VerifyUrlUtils.fn_VerifyTitle_CompanyProductsLinks(urlText);
+						companyProductLinks = BaseClass.getDriver().findElements(new RespositoryParser()
+								.getobjectLocator("HomeLoan.Company_ProductsLink"));
+						}else{
+							BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckCompany_ProductLink :"
+									+ companyProductLinks.get(i).getText()+ " Link is not working!!"); 
+						}	
+					}else{
+						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckCompany_ProductLink : not having values inside collection");
+						 
+					}
+			}
+		}catch(Exception e){
+
+		}
+		
+	}
 }

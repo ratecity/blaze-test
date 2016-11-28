@@ -1,7 +1,6 @@
 package com.ratecity.homeloan.automationFramework.pages;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
