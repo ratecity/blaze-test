@@ -27,8 +27,11 @@ public class Homepage_Test extends BaseClass {
 	  public void fn_VerifyHomeLoanLandingPage() throws  Exception{
 		 
 		  logger = report.startTest("HomeLoanLandingPage");
-		  BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans?nav=home-loans");
+		   BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans?nav=home-loans");
 		   Utility.GoToSleep(2000);
+		    HomeLoanLandingpage.fn_PopularHomeLoan();
+		   HomeLoanLandingpage.fn_CheckIfArticlesLinksAreWorking();
+		   HomeLoanLandingpage.fn_CheckCompany_ProductLink();
 		   HomeLoanLandingpage.fn_HomeLoanTools();
 		   HomeLoanLandingpage.fn_HomeLoanNews();
 		   HomeLoanLandingpage.fn_ClickonMoreHomeLoanNews();
