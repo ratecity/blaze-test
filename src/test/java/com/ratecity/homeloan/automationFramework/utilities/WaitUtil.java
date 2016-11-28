@@ -2,16 +2,19 @@ package com.ratecity.homeloan.automationFramework.utilities;
 
 
 
+import java.util.HashMap;
+import java.util.Properties;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.gargoylesoftware.htmlunit.javascript.host.Map;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class WaitUtil {
-
 	
 	private static WaitUtil Wait;
 	private WaitUtil(){

@@ -83,6 +83,16 @@ public class Utility {
       return false;
 	}
 	
+	public static boolean ContainsIgnorecase(String str1, String str2){
+		str1 = str1.toLowerCase();
+		str2 = str2.toLowerCase();
+		System.out.println("Str1" + str1);
+		System.out.println("Str2" + str2);
+		if(str1.contains(str2))
+			return true;
+		return false;
+	}
+	
 	public static boolean fn_VerifyURLStatus(String URL){
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(URL);
@@ -391,6 +401,14 @@ public class Utility {
 			}
 		}
 		return flag;
+	}
+	
+	/**
+	 * 
+	 */
+	public static void goBack(){
+		BaseClass.getDriver().navigate().back();
+		GoToSleep(1000);
 	}
 }
 
