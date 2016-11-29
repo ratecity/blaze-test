@@ -5,16 +5,19 @@ import java.net.URL;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.omg.PortableServer.POA;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import com.ratecity.homeloan.automationFramework.utilities.ActionsUtil;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
+import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.ratecity.homeloan.automationFramework.utilities.VerifyUrlUtils;
-import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
 import com.relevantcodes.extentreports.LogStatus;
+import com.sun.org.apache.regexp.internal.recompile;
 
 
 
@@ -115,7 +118,8 @@ public class HomeLoanLandingpage {
 		return false;
 	}
 
-	public static void fn_CheckBrowseMoreLink()throws Exception{
+	public static boolean fn_CheckBrowseMoreLink()throws Exception{
+		boolean flag=false;
 		WebElement browsemore = BaseClass.getDriver().findElement(new RespositoryParser().
 				getobjectLocator("HomeLoan.BrowseMore"));
 		if(Utility.isLinkBroken(new URL(browsemore.getAttribute("href")))){
@@ -124,21 +128,22 @@ public class HomeLoanLandingpage {
 			Utility.GoToSleep(1000);
 			browsemore.click();
 			BaseClass.getDriver().navigate().back();
-
+            flag=true;
 		}
 		else{
 			BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanTopLinks : "+
 					browsemore.getAttribute("href")+" is not working");
-
 		}
+		return flag;
 	}
 
 	/**
 	 * 
 	 * @throws Exception
 	 */
-	public static void fn_HomeLoanTopLinks() throws Exception{
+	public static boolean fn_HomeLoanTopLinks() throws Exception{
 		List<WebElement> homeloanType =null;
+		boolean flag=false;
 		homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.LoanTypes"));
 		for(int i=0;i<homeloanType.size()-1;i++){
@@ -151,10 +156,12 @@ public class HomeLoanLandingpage {
 				homeloanType.get(i).click();
 				Utility.GoToSleep(2000);
 				BaseClass.getDriver().navigate().back();
+				flag=true;
 			}
 			homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.LoanTypes"));
 		}
+		return flag;
 	}
 
 	public static int fn_CountvaluesOnComparebar() throws IOException{
@@ -186,6 +193,7 @@ public class HomeLoanLandingpage {
 		}
 		return flag;
 	}
+	
 
 	public static boolean fn_isClearButtonvisible()throws IOException{
 		boolean flag=false;
@@ -227,33 +235,37 @@ public class HomeLoanLandingpage {
 	 * 
 	 * @throws Exception
 	 */
-	public static void fn_HomeLoanNews() throws Exception{
+	public static boolean fn_HomeLoanNews() throws Exception{
+		boolean flag=false;
 		List<WebElement> homeloanNews =null;
 		List<WebElement> homeloanNewsBlocks =null;
+		Utility.GoToSleep(1000);
 		homeloanNews = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.News"));
 		homeloanNewsBlocks = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.News.Blocks"));
-
 		for(int i=0;i<homeloanNews.size();i++){
-			if(!Utility.isLinkBroken(new URL(homeloanNews.get(i).getAttribute("href")))){
-				BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanNews.get(i).getAttribute("href")+" is not working");
+			if(!Utility.fn_VerifyURLStatus(homeloanNews.get(i).getAttribute("href"))){
+				BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanNews : "+homeloanNews.get(i).getAttribute("href")+" is not working");
+				flag=false;
 				break;
 			}
 			else{ 
-				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanNews.get(i).getAttribute("href")+" is landed Successfully!!");
+				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_HomeLoanNews : "+homeloanNews.get(i).getAttribute("href")+" is landed Successfully!!");
 				Utility.scrollToElement(homeloanNewsBlocks.get(i)); 
-				//Utility.GoToSleep(2000);
+				Utility.GoToSleep(1500);
 				Utility.highlightElementBorder(homeloanNewsBlocks.get(i));
 				homeloanNewsBlocks.get(i).click();
 				Utility.GoToSleep(2000);
 				BaseClass.getDriver().navigate().back();
+				flag=true;
 			}
 			homeloanNews = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.News"));
 			homeloanNewsBlocks = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.News.Blocks"));
 		}
+		return flag;
 	}
 
 	/**
@@ -280,7 +292,8 @@ public class HomeLoanLandingpage {
 	 * 
 	 * 
 	 */
-	public static void fn_HomeLoanTools(){
+	public static boolean fn_HomeLoanTools(){
+		boolean flag=false;
 		List<WebElement> homeLoanTools=null;
 		try {
 			homeLoanTools = BaseClass.getDriver().findElements(new RespositoryParser()
@@ -296,7 +309,8 @@ public class HomeLoanLandingpage {
 							homeLoanTools = BaseClass.getDriver().findElements(new RespositoryParser()
 									.getobjectLocator("HomeLoan.Tools"));
 							BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_HomeLoanTools :"
-									+homeLoanTools.get(i).getText()+" page is displayed successfully!!"); 
+									+homeLoanTools.get(i).getText()+" page is displayed successfully!!");
+							flag=true;
 						}else{
 							BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_HomeLoanTools :"
 									+ homeLoanTools.get(i).getText()+ " Link is not working!!"); 
@@ -314,6 +328,7 @@ public class HomeLoanLandingpage {
 							BaseClass.getDriver().findElement(By.xpath("//button[text()='Close']")).click();
 							//Utility.GoToSleep(1000);
 							BaseClass.getDriver().switchTo().defaultContent();
+							flag=true;
 						}
 						else{
 							homeLoanTools.get(i).click();
@@ -328,38 +343,46 @@ public class HomeLoanLandingpage {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
-
+     return flag;
 	}
 
-	public static void fn_PopularHomeLoan()throws IOException{
+	public static boolean fn_PopularHomeLoan()throws IOException{
+		boolean flag=false;
 		List<WebElement> popularHomeLoans=null;
 		popularHomeLoans = BaseClass.getDriver().findElements(new RespositoryParser()
 				.getobjectLocator("HomeLoan.PopularHomeLoanLinks"));
 		try{
 			for(int i=0;i<popularHomeLoans.size();i++){
-				
+
 				if(popularHomeLoans.get(i)!=null){
 					if(Utility.fn_VerifyURLStatus(popularHomeLoans.get(i).getAttribute("href"))){
-					String urlText = popularHomeLoans.get(i).getText();
-					popularHomeLoans.get(i).click();
-					VerifyUrlUtils.fn_VerifyTitle_PopularHomeLoans(urlText);
-					popularHomeLoans = BaseClass.getDriver().findElements(new RespositoryParser()
-							.getobjectLocator("HomeLoan.PopularHomeLoanLinks"));
+						String urlText = popularHomeLoans.get(i).getText();
+						popularHomeLoans.get(i).click();
+						if(VerifyUrlUtils.fn_VerifyTitle_PopularHomeLoans(urlText)){
+							flag=true;
+						}else{
+							flag=false;
+						}
+						popularHomeLoans = BaseClass.getDriver().findElements(new RespositoryParser()
+								.getobjectLocator("HomeLoan.PopularHomeLoanLinks"));
 					}else{
 						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_PopularHomeLoan :"
 								+ popularHomeLoans.get(i).getText()+ " Link is not working!!"); 
+						flag=false;
 					}
 				}else{
 					BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_PopularHomeLoan : not having values inside collection");
-							 
+					flag=false;
 				}
 			}
 		}catch(Exception e){
 
 		}
+		return flag;
 	}
-	public static void fn_CheckIfArticlesLinksAreWorking()throws IOException{
+	public static boolean fn_CheckIfArticlesLinksAreWorking()throws IOException{
 		List<WebElement> articlesLinks=null;
+		boolean flag=false;
 		articlesLinks = BaseClass.getDriver().findElements(new RespositoryParser()
 				.getobjectLocator("HomeLoan.Articles.Links"));
 		try{
@@ -368,51 +391,299 @@ public class HomeLoanLandingpage {
 					if(Utility.fn_VerifyURLStatus(articlesLinks.get(i).getAttribute("href"))){
 						String urlText = articlesLinks.get(i).getText();
 						articlesLinks.get(i).click();
-						VerifyUrlUtils.fn_VerifyTitle_ArticlesLinks(urlText);
+						if(VerifyUrlUtils.fn_VerifyTitle_ArticlesLinks(urlText)){
+							flag=true;
+						}else {
+							flag=false;
+						}
 						articlesLinks = BaseClass.getDriver().findElements(new RespositoryParser()
 								.getobjectLocator("HomeLoan.Articles.Links"));
-						}else{
-							BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckIfArticlesLinksAreWorking :"
-									+ articlesLinks.get(i).getText()+ " Link is not working!!"); 
-						}	
 					}else{
-						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckIfArticlesLinksAreWorking : not having values inside collection");
-						 
-					}
+						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckIfArticlesLinksAreWorking :"
+								+ articlesLinks.get(i).getText()+ " Link is not working!!"); 
+						flag=false;
+					}	
+				}else{
+					BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckIfArticlesLinksAreWorking : not having values inside collection");
+					flag=false;
+				}
 			}
 		}catch(Exception e){
 
 		}
+		return flag;
 	}
 
-	public static void fn_CheckCompany_ProductLink() throws IOException{
+	public static boolean fn_CheckCompany_ProductLink() throws IOException{
 		List<WebElement> companyProductLinks=null;
+		boolean flag=false;
 		companyProductLinks=BaseClass.getDriver().findElements(new RespositoryParser()
 				.getobjectLocator("HomeLoan.Company_ProductsLink"));
 		try{
 			for(int i=0;i<companyProductLinks.size();i++){
-				System.out.println("Size@@@@" + companyProductLinks.size());
-				System.out.println("***********"+ companyProductLinks.get(i).getText());
 				if(companyProductLinks.get(i)!=null){
 					if(Utility.fn_VerifyURLStatus(companyProductLinks.get(i).getAttribute("href"))){
 						String urlText = companyProductLinks.get(i).getText();
-						System.out.println("URl_TEXT"+urlText);
 						companyProductLinks.get(i).click();
 						VerifyUrlUtils.fn_VerifyTitle_CompanyProductsLinks(urlText);
 						companyProductLinks = BaseClass.getDriver().findElements(new RespositoryParser()
 								.getobjectLocator("HomeLoan.Company_ProductsLink"));
-						}else{
-							BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckCompany_ProductLink :"
-									+ companyProductLinks.get(i).getText()+ " Link is not working!!"); 
-						}	
+						flag=true;
 					}else{
-						BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckCompany_ProductLink : not having values inside collection");
-						 
-					}
+						BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD==>fn_CheckCompany_ProductLink :"
+								+ companyProductLinks.get(i).getText()+ " Link is not working!!"); 
+						flag=false;
+					}	
+				}else{
+					BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD==>fn_CheckCompany_ProductLink : not having values inside collection");
+					flag=false;
+				}
 			}
 		}catch(Exception e){
 
 		}
-		
+      return flag;
+	}
+
+	/**
+	 * 
+	 * @param locator
+	 * @return
+	 * @throws IOException
+	 */
+
+	public static boolean fn_CheckIfMenuIsPresent(String locator) throws IOException{
+		boolean flag=false;
+		By by=null;
+		locator = locator.toUpperCase();
+		switch (locator) {
+		case "BORROW":
+			by = new RespositoryParser().getobjectLocator("HomeLoan.Borrow");
+			if(Utility.isElementPresentAndDisplay(by)){
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_CheckIfMenuIsPresent :"+locator+" -- element is present!!");
+				new ActionsUtil(BaseClass.getDriver()).fn_PerformMouseHover(BaseClass.getDriver().findElement(by));
+				if(fn_CheckSubMenuIsPresent("HomeLoan.Borrow.SubMenu")){
+					Assert.assertTrue(true,"SubMenu are available");
+				}else{
+					Assert.assertTrue(false,"SubMenu are not available!!");
+				}
+				flag= true;
+			}else{
+				BaseClass.logger.log(LogStatus.FATAL,"BORROW menu is not Visible");
+			}
+			break;
+		case "SAVE":
+			by = new RespositoryParser().getobjectLocator("HomeLoan.Save");
+			if(Utility.isElementPresentAndDisplay(by)){
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_CheckIfMenuIsPresent :"+locator+" --element is present!!");
+				new ActionsUtil(BaseClass.getDriver()).fn_PerformMouseHover(BaseClass.getDriver().findElement(by));
+				if(fn_CheckSubMenuIsPresent("HomeLoan.Save.SubMenu")){
+					Assert.assertTrue(true,"SubMenu are available");
+				}else{
+					Assert.assertTrue(false,"SubMenu are not available!!");
+				}
+				flag= true;
+			}else{
+				BaseClass.logger.log(LogStatus.FATAL,"SAVE menu is not Visible");
+			}
+			break;
+		case "INVEST":
+			by = new RespositoryParser().getobjectLocator("HomeLoan.Invest");
+			if(Utility.isElementPresentAndDisplay(by)){
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_CheckIfMenuIsPresent :"+locator+" --element is present!!");
+				new ActionsUtil(BaseClass.getDriver()).fn_PerformMouseHover(BaseClass.getDriver().findElement(by));
+				if(fn_CheckSubMenuIsPresent("HomeLoan.Invest.SubMenu")){
+					Assert.assertTrue(true,"SubMenu are available");
+				}else{
+					Assert.assertTrue(false,"SubMenu are not available!!");
+				}
+				flag= true;
+			}else{
+				BaseClass.logger.log(LogStatus.FATAL,"INVEST menu is not Visible");
+			}
+			break;
+		case "CALCULATE":
+			by = new RespositoryParser().getobjectLocator("HomeLoan.Calculate");
+			if(Utility.isElementPresentAndDisplay(by)){
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_CheckIfMenuIsPresent :"+locator+" --element is present!!");
+				new ActionsUtil(BaseClass.getDriver()).fn_PerformMouseHover(BaseClass.getDriver().findElement(by));
+				if(fn_CheckSubMenuIsPresent("HomeLoan.Calculate.SubMenu")){
+					Assert.assertTrue(true,"SubMenu are available");
+				}else{
+					Assert.assertTrue(false,"SubMenu are not available!!");
+				}
+				flag= true;
+			}else{
+				BaseClass.logger.log(LogStatus.FATAL,"CALCULATE menu is not Visible");
+			}
+			break;
+		case "NEWS":
+			by = new RespositoryParser().getobjectLocator("HomeLoan.News");
+			if(Utility.isElementPresentAndDisplay(by)){
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_CheckIfMenuIsPresent :"+locator+" --element is present!!");
+				new ActionsUtil(BaseClass.getDriver()).fn_PerformMouseHover(BaseClass.getDriver().findElement(by));
+				if(fn_CheckSubMenuIsPresent("HomeLoan.News.SubMenu")){
+					Assert.assertTrue(true,"SubMenu are available");
+				}else{
+					Assert.assertTrue(false,"SubMenu are not available!!");
+				}
+				flag= true;
+			}else{
+				BaseClass.logger.log(LogStatus.FATAL,"NEWS menu is not Visible");
+			}
+			break;
+
+		default:
+			flag=false;
+			break;
+		}
+		return flag;
+	}
+
+	public static boolean fn_CheckSubMenuIsPresent(String locator) throws IOException  {
+		boolean flag = false;
+		By by = new RespositoryParser().getobjectLocator(locator);
+		List<WebElement> subMenu = BaseClass.getDriver().findElements(by);
+		if(!subMenu.isEmpty()){
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_CheckSubMenuIsPresent :"
+					+subMenu.size() + " - elements are present!!");
+			flag =  true;
+		}
+		else{
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CheckSubMenuIsPresent :"
+					+subMenu.size() + "elements are present!!");
+		}
+
+		return flag;
+	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public static boolean fn_CheckAboutUsIsWorking()throws Exception{
+		boolean flag = false;
+		By by;
+		by = new RespositoryParser().getobjectLocator("HomeLoan.AboutUs");
+		WebElement aboutUs = BaseClass.getDriver().findElement(by);
+		if(Utility.fn_VerifyURLStatus(aboutUs.getAttribute("href"))){
+			String text = aboutUs.getText();
+			aboutUs.click();
+			if(VerifyUrlUtils.fn_VerifyTitle_About_ContactUs(text)){
+				flag=true;
+			}
+		}else{
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CheckAboutUsIsWorking :"
+					+aboutUs.getText() + "-- URL is not working!!");
+		}
+		return flag;
+
+	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public static boolean fn_CheckContactUsIsWorking()throws Exception{
+		boolean flag = false;
+		By by;
+		by = new RespositoryParser().getobjectLocator("HomeLoan.ContactUs");
+		WebElement aboutUs = BaseClass.getDriver().findElement(by);
+		if(Utility.fn_VerifyURLStatus(aboutUs.getAttribute("href"))){
+			String text = aboutUs.getText();
+			aboutUs.click();
+			if(VerifyUrlUtils.fn_VerifyTitle_About_ContactUs(text)){
+				flag=true;
+			}
+		}else{
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CheckAboutUsIsWorking :"
+					+aboutUs.getText() + "-- URL is not working!!");
+		}
+		return flag;
+
+	}
+
+	public static boolean fn_VerifyFooterMenuisDisplayed() throws Exception{
+		By by=null;
+		by = new RespositoryParser().getobjectLocator("HomeLoan.FooterMenu");
+		Utility.scrollToElement(BaseClass.getDriver().findElement(by));
+		//WebElement footerMenu = BaseClass.getDriver().findElement(by);
+		if(Utility.isElementPresentAndDisplay(by)){
+			Utility.highlightElementBorder(BaseClass.getDriver().findElement(by));
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_FooterMenuisDisplayed :"
+					+"FOOTER MENU is getting displayed");
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+
+	public static boolean fn_DisclaimerisDisplayed() throws Exception{
+		By by=null;
+		by = new RespositoryParser().getobjectLocator("HomeLoan.Disclaimer");
+		Utility.scrollToElement(BaseClass.getDriver().findElement(by));
+		//WebElement footerMenu = BaseClass.getDriver().findElement(by);
+		if(Utility.isElementPresentAndDisplay(by)){
+			Utility.highlightElementBorder(BaseClass.getDriver().findElement(by));
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_DisclaimerisDisplayed :"
+					+"Disclaimer is getting displayed");
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	public static boolean fn_VerifyRateCityLogoisDisplayed() throws Exception{
+		By by=null;
+		by=	new RespositoryParser().getobjectLocator("HomeLoan.RateCityLogo");
+		Utility.scrollToElement(BaseClass.getDriver().findElement(by));
+		if(Utility.isImagePresent(by)){
+			Utility.highlightElementBorder(BaseClass.getDriver().findElement(by));
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_VerifyRateCityLogoisDisplayed :"
+					+"RateCityImage is getting displayed");
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	public static boolean fn_CopyRightedInfoIsPresent() throws Exception{
+		By by=null;
+		boolean flag = false;
+		by=new RespositoryParser().getobjectLocator("HomeLoan.CopyRightInfo");
+		List<WebElement> info = BaseClass.getDriver().findElements(by);
+		if(!info.isEmpty()){
+			if(info.get(0).isDisplayed()){
+				Utility.scrollToElement(info.get(0));
+				Utility.highlightElementBorder(info.get(0));
+				if(info.get(1).isDisplayed()){
+					Utility.scrollToElement(info.get(1));
+					Utility.highlightElementBorder(info.get(1));
+					if(info.get(2).isDisplayed()){
+						Utility.scrollToElement(info.get(2));
+						Utility.highlightElementBorder(info.get(2));
+						flag=true;
+					}else{
+						BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CopyRightedInfoIsPresent :"
+								+"© 2016 RateCity is not getting displayed");
+						flag=false;
+					}
+				}else{
+					BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CopyRightedInfoIsPresent :"
+							+"AFSL & ACL 316710 is not getting displayed");
+					flag=false;
+				}}else{
+					BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CopyRightedInfoIsPresent :"
+							+"ABN 12122743542 is not getting displayed");
+				}
+		}else{
+			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_CopyRightedInfoIsPresent :"
+					+"Info is not present");
+			flag=false;
+	  }
+		return flag;
 	}
 }
