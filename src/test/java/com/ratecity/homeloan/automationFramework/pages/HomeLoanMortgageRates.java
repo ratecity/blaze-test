@@ -28,14 +28,28 @@ public class HomeLoanMortgageRates {
 	
 	public static void fn_ClickOnCompareCheckbox(int value)throws Exception{
 	
-		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate"));
+		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
+				getobjectLocator("HomeLoan.MortgageRate"));
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
 			Utility.selectcheckbox(we.get(i));
 			//we.get(i).click();
 			Utility.GoToSleep(1000);
 		}
-		
+	}
+	public static boolean fn_IsCompareCheckBoxSelected(int value) throws Exception{
+		boolean flag=false;
+		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
+				getobjectLocator("HomeLoan.MortgageRate"));
+		for (int i=0;i<value;i++) {
+			Utility.scrollToElement(we.get(i));
+			if(Utility.isCheckBoxSelected(we.get(i))){
+				flag=true;
+			}else{
+				flag=false;
+			}
+		}
+		return flag;
 	}
 	public static HomeLoanComparisonpage fn_ClickOnCompareButton() throws Exception{
 		
@@ -48,6 +62,10 @@ public class HomeLoanMortgageRates {
 			return new HomeLoanComparisonpage();
 		}
 		return null;
+	}
+	
+	public static void fn_ClickOnClearButton(){
+		
 	}
 	
 	public static HomeLoanComparisonpage fn_ClickOnComparewithBig4Button() throws Exception{
@@ -164,6 +182,19 @@ public class HomeLoanMortgageRates {
 			}
 		}
 
+	}
+	
+	public static int fn_CheckNumberOfRateRecord() throws IOException{
+		By by = new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate.RateRecord");
+		List<WebElement> list = BaseClass.getDriver().findElements(by);
+		if(!list.isEmpty()){
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckNumberOfRateRecord"+list.size()+"-- Rows is getting displayed");
+			return list.size();
+		}else{
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_CheckNumberOfRateRecord"+list.size()+"-- No record found");
+			return list.size();
+		}
+		
 	}
 	
 	public static boolean fn_Verfiy_AdvertisedRateText(String textToBeFound)throws IOException{

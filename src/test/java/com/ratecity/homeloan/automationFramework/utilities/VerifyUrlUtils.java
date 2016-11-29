@@ -69,11 +69,18 @@ public class VerifyUrlUtils {
 					put("Kick Starter Home Loan", "Home Loans Kick Starter Home Loan");
 
 				}};
+				static final Map<String , String> AboutUs_ContactUs = new HashMap<String , String>() {/**
+					 * 
+					 */
+						private static final long serialVersionUID = 1L;
+
+						{
+							put("About Us","About Us");
+							put("Contact Us", "Contact RateCity");
+						}};
 
 
 				public static boolean fn_VerifyTitle_PopularHomeLoans(String urlText){
-
-					System.out.println("URL TEXT : "+urlText);
 					if(BaseClass.getDriver().getTitle().contains(PopularHomeLoansURL.get(urlText))){
 						Utility.GoToSleep(1000);
 						Utility.goBack();
@@ -98,7 +105,7 @@ public class VerifyUrlUtils {
 						return false;
 					}
 				}
-				
+
 				public static boolean fn_VerifyTitle_CompanyProductsLinks(String urlText){
 
 					if(BaseClass.getDriver().getTitle().contains(CompanyProductsLinks.get(urlText))){
@@ -108,6 +115,18 @@ public class VerifyUrlUtils {
 						return true;
 					}else{
 						BaseClass.logger.log(LogStatus.FAIL, "INTO METHOD==>fn_VerifyTitle_CompanyProductsLinks : "+urlText +" Page is not Loaded Succesfully!!");
+						Assert.assertTrue(false,urlText +" Page is not Loaded Succesfully!!");
+						return false;
+					}
+				}
+				public static boolean fn_VerifyTitle_About_ContactUs(String urlText){
+					if(BaseClass.getDriver().getTitle().contains(AboutUs_ContactUs.get(urlText))){
+						Utility.GoToSleep(1000);
+						BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_VerifyTitle_About_ContactUs : "+urlText +" Page Loaded Succesfully!!");
+						Utility.goBack();
+						return true;
+					}else{
+						BaseClass.logger.log(LogStatus.FAIL, "INTO METHOD==>fn_VerifyTitle_About_ContactUs : "+urlText +" Page is not Loaded Succesfully!!");
 						Assert.assertTrue(false,urlText +" Page is not Loaded Succesfully!!");
 						return false;
 					}

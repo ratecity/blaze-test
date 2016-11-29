@@ -24,6 +24,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import com.relevantcodes.extentreports.LogStatus;
+import com.sun.org.apache.regexp.internal.recompile;
 
 
 public class Utility {
@@ -215,14 +216,14 @@ public class Utility {
 		boolean flag=false;
 		try {
 			BaseClass.getDriver().findElement(by).isDisplayed();
-			BaseClass.logger.log(LogStatus.INFO, "*********Element Is found & displayed");flag=true;
+			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
 			return flag;
 		} catch (NoSuchElementException e) {
 			GoToSleep(2000);
-			BaseClass.logger.log(LogStatus.INFO, "**Going for sleep & wait sometime for the element to be displayed");
+			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Going for sleep & wait sometime for the element to be displayed");
 			BaseClass.getDriver().findElement(by).isDisplayed();
 		}
-		BaseClass.logger.log(LogStatus.INFO, "**Element not found after given time**");
+		BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element not found after given time");
 		return false;
 	}
 
@@ -275,6 +276,11 @@ public class Utility {
 					+ e.getMessage());
 		}
 	}
+	
+	public static boolean isCheckBoxSelected(WebElement locator){
+		if(locator.isSelected()) return true;
+		else return false;
+	}
 	/**
 	 * 
 	 * @param webelement
@@ -304,28 +310,28 @@ public class Utility {
 		try {
 			if (we.isDisplayed() && !we.isSelected()) {
 				we.click();
-				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is selected now*****");
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Checkbox is selected");
 			} else {
-				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is already selected*****");
+				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Checkbox is already selected");
 			}
 		} catch (ElementNotVisibleException env) {
 			GoToSleep(1000);
 			if (!we.isSelected())
 				we.click();
 			env.printStackTrace();
-			BaseClass.logger.log(LogStatus.INFO,"*****Element is present in DOM but not visible on the page*****"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Element is present in DOM but not visible on the page"
 					+ env.getMessage());
 		} catch (NoSuchElementException ne) {
 			ne.printStackTrace();
-			BaseClass.logger.log(LogStatus.INFO,"*****The element could not be located on the page.*****"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- The element could not be located on the page."
 					+ ne.getMessage());
 		} catch (StaleElementReferenceException se) {
 			se.printStackTrace();
-			BaseClass.logger.log(LogStatus.INFO,"*****Either the element has been deleted entirely or the element is no longer attached to DOM.*****"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Either the element has been deleted entirely or the element is no longer attached to DOM."
 					+ se.getMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
-			BaseClass.logger.log(LogStatus.INFO,"*****Error in selecting a checkbox!!! *****"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Error in selecting a checkbox!!!"
 					+ e.getMessage());
 		}
 	}
@@ -370,17 +376,17 @@ public class Utility {
 		boolean flag = false;
 		try{
 			element.click();flag=true;
-			BaseClass.logger.log(LogStatus.INFO, "**INTO Method ==> ClickElement : Element clicked successfully!**");
+			BaseClass.logger.log(LogStatus.INFO, "INTO Method ==> ClickElement : Element clicked successfully!");
 			return flag;
 		}catch(ElementNotVisibleException ne){
-			BaseClass.logger.log(LogStatus.INFO, "**INTO Method ==> ClickElement : Waiting for element to be visible**");
+			BaseClass.logger.log(LogStatus.INFO, "INTO Method ==> ClickElement : Waiting for element to be visible");
 			GoToSleep(2000);
 			element.click();flag=true;
-			BaseClass.logger.log(LogStatus.INFO, "**INTO Method ==> ClickElement : Element clicked successfully after waiting**");
+			BaseClass.logger.log(LogStatus.INFO, "INTO Method ==> ClickElement : Element clicked successfully after waiting**");
 			return flag;
 		}
 		catch(StaleElementReferenceException se){
-			BaseClass.logger.log(LogStatus.INFO, "**INTO Method ==> ClickElement : Waiting for element to be visible after Stale Reference **");
+			BaseClass.logger.log(LogStatus.INFO, "INTO Method ==> ClickElement : Waiting for element to be visible after Stale Reference **");
 			GoToSleep(2000);
 			try{
 				//Thread.sleep(10000);
@@ -390,7 +396,7 @@ public class Utility {
 				element.click();
 			}
 		}catch(NoSuchElementException ne){
-			BaseClass.logger.log(LogStatus.INFO, "**INTO Method ==> ClickElement : Waiting for element In No Such element exception**");
+			BaseClass.logger.log(LogStatus.INFO, "INTO Method ==> ClickElement : Waiting for element In No Such element exception**");
 			GoToSleep(2000);;
 			try{
 				//Thread.sleep(10000);
@@ -409,6 +415,17 @@ public class Utility {
 	public static void goBack(){
 		BaseClass.getDriver().navigate().back();
 		GoToSleep(1000);
+	}
+	/**
+	 * Method to verify, If image is present or not?
+	 * @param by
+	 * @return
+	 */
+	public static boolean isImagePresent(By by){
+		WebElement ImageFile = BaseClass.getDriver().findElement(by);
+		Boolean ImagePresent = (Boolean) ((JavascriptExecutor)BaseClass.getDriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
+		if(!ImagePresent)return false;
+		else return true;
 	}
 }
 

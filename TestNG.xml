@@ -2,9 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Demo_suite_1" verbose="1">
-  <test name="Regression_suite 1" >
-    <classes>
-      <class name="com.ratecity.homeloan.automationFramework.test.Homepage_Test"/>
-       </classes>
- </test>
+	<test name="HomeLoanLandingPage">
+		<classes>
+			<class
+				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_LandingPage" />
+		</classes>
+	</test>
+	<test name="HomeLoanMortgageRatePage">
+		<classes>
+			<class
+				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_MortgageRates" />
+		</classes>
+	</test>
 </suite>
