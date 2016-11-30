@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.collections.ExtendedProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
@@ -14,6 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -101,9 +101,11 @@ public class BaseClass {
 	  public void fn_closebrowser(ITestResult result){
 		  if(result.getStatus()==ITestResult.FAILURE)
 		  {
+			  //logger.log(LogStatus.FAIL, result.getThrowable());
 			String screenshot_path = Utility.CaptureScreen(BaseClass.getDriver(), result.getName());
 			String image  = logger.addScreenCapture(screenshot_path);
 			logger.log(LogStatus.FAIL,"Snapshot below: " ,image);
+			//logger.log(LogStatus.FAIL,result.getThrowable().getMessage());
 		    driver.quit();
 		  }
 		  else{

@@ -68,7 +68,7 @@ public class Homepage_Test extends BaseClass {
 		if(HomeLoanComparisonpage.fn_CheckEmbedWindowisDisplayed()){
 			Assert.assertTrue(true);
 		}else{
-			Assert.assertTrue(false,"Expected Window is not displayed");
+			Assert.assertTrue(false,"Expected Window is not di");
 		}
 			
 		/*HomeLoanLandingpage.fn_ClickOnClearButton();
