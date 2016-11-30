@@ -8,6 +8,7 @@
 				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_LandingPage" />
 		</classes>
 	</test>
+
 	<test name="HomeLoanMortgageRatePage">
 		<classes>
 			<class
