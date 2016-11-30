@@ -17,7 +17,6 @@ import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.ratecity.homeloan.automationFramework.utilities.VerifyUrlUtils;
 import com.relevantcodes.extentreports.LogStatus;
-import com.sun.org.apache.regexp.internal.recompile;
 
 
 
@@ -240,8 +239,8 @@ public class HomeLoanLandingpage {
 		List<WebElement> homeloanNews =null;
 		List<WebElement> homeloanNewsBlocks =null;
 		Utility.GoToSleep(1000);
-		homeloanNews = BaseClass.getDriver().findElements(new RespositoryParser().
-				getobjectLocator("HomeLoan.News"));
+		homeloanNews = BaseClass.getDriver().findElements(By.cssSelector("div.news-item >a"));
+		System.out.println("Li is " + homeloanNews.size());
 		homeloanNewsBlocks = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.News.Blocks"));
 		for(int i=0;i<homeloanNews.size();i++){
@@ -257,11 +256,10 @@ public class HomeLoanLandingpage {
 				Utility.highlightElementBorder(homeloanNewsBlocks.get(i));
 				homeloanNewsBlocks.get(i).click();
 				Utility.GoToSleep(2000);
-				BaseClass.getDriver().navigate().back();
+				Utility.goBack();
 				flag=true;
 			}
-			homeloanNews = BaseClass.getDriver().findElements(new RespositoryParser().
-					getobjectLocator("HomeLoan.News"));
+			homeloanNews = BaseClass.getDriver().findElements(By.cssSelector("div.news-item >a"));
 			homeloanNewsBlocks = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.News.Blocks"));
 		}
@@ -612,7 +610,7 @@ public class HomeLoanLandingpage {
 		//WebElement footerMenu = BaseClass.getDriver().findElement(by);
 		if(Utility.isElementPresentAndDisplay(by)){
 			Utility.highlightElementBorder(BaseClass.getDriver().findElement(by));
-			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_FooterMenuisDisplayed :"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_FooterMenuisDisplayed :"
 					+"FOOTER MENU is getting displayed");
 			return true;
 		}else {
@@ -628,7 +626,7 @@ public class HomeLoanLandingpage {
 		//WebElement footerMenu = BaseClass.getDriver().findElement(by);
 		if(Utility.isElementPresentAndDisplay(by)){
 			Utility.highlightElementBorder(BaseClass.getDriver().findElement(by));
-			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_DisclaimerisDisplayed :"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_DisclaimerisDisplayed :"
 					+"Disclaimer is getting displayed");
 			return true;
 		}else {
@@ -642,7 +640,7 @@ public class HomeLoanLandingpage {
 		Utility.scrollToElement(BaseClass.getDriver().findElement(by));
 		if(Utility.isImagePresent(by)){
 			Utility.highlightElementBorder(BaseClass.getDriver().findElement(by));
-			BaseClass.logger.log(LogStatus.ERROR,"INTO METHOD ==>fn_VerifyRateCityLogoisDisplayed :"
+			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>fn_VerifyRateCityLogoisDisplayed :"
 					+"RateCityImage is getting displayed");
 			return true;
 		}else {
