@@ -89,8 +89,8 @@ public class HomeLoan_LandingPage extends BaseClass {
 			Assert.assertTrue(true);
 			BaseClass.logger.log(LogStatus.PASS,"All News Links  are  working");
 		}else{
-			Assert.assertTrue(false,"Links are not working");
 			BaseClass.logger.log(LogStatus.FAIL,"Issue in News links");
+			Assert.assertTrue(false,"Links are not working");
 		} 
 	}
 
