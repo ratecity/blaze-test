@@ -7,3 +7,5 @@ notifications:
       - Deepak.gupta@tothenew.com   
     on_success: always
     on_failure: always
+no-sandbox
+no-default-browser-check

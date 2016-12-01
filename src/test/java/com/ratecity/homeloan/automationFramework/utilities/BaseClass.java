@@ -20,7 +20,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class BaseClass {
-	public static HtmlUnitDriver driver;
+	public static WebDriver driver;
 	public static RespositoryParser parser;
 	public  static ExtentReports report;
 	public  static ExtentTest logger;
@@ -87,8 +87,7 @@ public class BaseClass {
 	@BeforeMethod
 	  public void fn_Launchbrowser() throws IOException{
 		 System.setProperty(Utility.fn_ReaddataFronPropFile("chromeDriver"), Utility.fn_ReaddataFronPropFile("chromeDriverpath"));
-		  driver  = new HtmlUnitDriver();
-		  driver.setJavascriptEnabled(true);
+		  driver  = new ChromeDriver();
 		  driver.manage().timeouts().implicitlyWait(Integer.parseInt(Utility.fn_ReaddataFronPropFile("implicit_wait")), TimeUnit.SECONDS);
 		  driver.manage().window().maximize();
 		  driver.manage().deleteAllCookies();
