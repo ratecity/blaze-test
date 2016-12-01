@@ -67,6 +67,11 @@ public class VerifyUrlUtils {
 					put("Special Low Variable Rate Home Loan", "Special Low Variable Rate Home Loan"); 
 					put("Breathe Easy Home Loan (LVR < 80%)", "Breathe Easy Home Loan"); 
 					put("Kick Starter Home Loan", "Home Loans Kick Starter Home Loan");
+					put("PROMOTEDBudget Home Loan (LVR < 90%)", "IMB Budget Home Loan");
+					put("PROMOTEDMortgage Saver Home Loan", "Mortgage Saver Home Loan");
+					put("PROMOTEDKick Starter Home Loan", "Home Loans Kick Starter Home Loan");
+					put("Essentials Home Loan (Purchase) (Principal and Interest)", "Essentials Home Loan");
+					
 
 				}};
 				static final Map<String , String> AboutUs_ContactUs = new HashMap<String , String>() {/**
@@ -107,7 +112,7 @@ public class VerifyUrlUtils {
 				}
 
 				public static boolean fn_VerifyTitle_CompanyProductsLinks(String urlText){
-
+                    
 					if(BaseClass.getDriver().getTitle().contains(CompanyProductsLinks.get(urlText))){
 						Utility.GoToSleep(1000);
 						Utility.goBack();
