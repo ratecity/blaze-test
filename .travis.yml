@@ -9,5 +9,10 @@ notifications:
     on_failure: always 
 sudo: required  
 dist: trusty 
-script: phantomjs testrunner.js
+before_install: 
+ - export CHROME_BIN=/usr/bin/chromedriver
+ - export DISPLAY=:99.0
+ - sh -e /etc/init.d/xvfb start
+
+
 
