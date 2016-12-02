@@ -14,7 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 
 
-public class HomeLoan_MortgageRates extends BaseClass {
+public class HomeLoan_MortgageRates_Test extends BaseClass {
 
 	@Test(priority=1)
 	public void Test_ToVerifyClearButtonFunctionality() throws Exception{

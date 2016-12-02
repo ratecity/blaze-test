@@ -15,7 +15,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 
 
-public class HomeLoan_LandingPage extends BaseClass {
+public class HomeLoan_LandingPage_Test extends BaseClass {
 
 	@Test(priority=1)
 	public void Test_ToVerifyTopLinksAreWorking() throws Exception{
