@@ -1,6 +1,7 @@
 package com.ratecity.homeloan.automationFramework.test;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanComparisonpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanLandingpage;
