@@ -6,6 +6,6 @@ notifications:
     recipients:
       - Deepak.gupta@tothenew.com   
     on_success: always
-    on_failure: always
+    on_failure: always 
 
 
