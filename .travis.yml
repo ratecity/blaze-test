@@ -7,5 +7,7 @@ notifications:
       - Deepak.gupta@tothenew.com   
     on_success: always
     on_failure: always 
+sudo: required  
+dist: trusty 
 script: phantomjs testrunner.js
 
