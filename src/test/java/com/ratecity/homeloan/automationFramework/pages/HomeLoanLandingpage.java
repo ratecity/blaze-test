@@ -240,7 +240,6 @@ public class HomeLoanLandingpage {
 		List<WebElement> homeloanNewsBlocks =null;
 		Utility.GoToSleep(1000);
 		homeloanNews = BaseClass.getDriver().findElements(By.cssSelector("div.news-item >a"));
-		System.out.println("Li is " + homeloanNews.size());
 		homeloanNewsBlocks = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.News.Blocks"));
 		for(int i=0;i<homeloanNews.size();i++){

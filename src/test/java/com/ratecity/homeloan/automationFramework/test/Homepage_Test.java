@@ -18,7 +18,7 @@ public class Homepage_Test extends BaseClass {
 
 
 
-	@Test(priority=1)
+	//@Test(priority=1)
 	public void fn_VerifyHomeLoanLandingPage() throws  Exception{
 
 		logger = report.startTest("HomeLoanLandingPage");
@@ -57,7 +57,7 @@ public class Homepage_Test extends BaseClass {
 	}	
 
 
-	@Test()
+//	@Test()
 	public void fn_ComparepagePart2() throws Exception {
 		logger = report.startTest("ComparePagePart2");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -112,7 +112,7 @@ public class Homepage_Test extends BaseClass {
 
 
 
-	@Test(priority=2)
+	//@Test(priority=2)
 	public void fn_toVerifyComparefunctionalityWith2Banks() throws Exception{
 
 		logger = report.startTest("CompareButtonFunctionality");
@@ -132,7 +132,7 @@ public class Homepage_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=3)
+	//@Test(priority=3)
 	public void fn_toVerifyCompareWithBig4Button() throws Exception{
 
 		logger = report.startTest("CompareWithBig4ButtonFunctionality");
@@ -151,7 +151,7 @@ public class Homepage_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=4)
+//	@Test(priority=4)
 	public void fn_HomeLoanMortgagepage_SearchListing() throws Exception{
 		logger = report.startTest("HomeLoanSearchListing");
 		//BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
