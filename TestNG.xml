@@ -4,14 +4,14 @@
 	<test name="HomeLoanLandingPage">
 		<classes>
 			<class
-				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_LandingPage" />
+				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_LandingPage_Test" />
 		</classes>
 	</test>
 
 	<test name="HomeLoanMortgageRatePage">
 		<classes>
 			<class
-				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_MortgageRates" />
+				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_MortgageRates_Test" />
 		</classes>
 	</test>
 </suite>
