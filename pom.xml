@@ -58,6 +58,7 @@
 	<profiles>
 		<profile>
 			<id>selenium-tests</id>
+			
 			<build>
 				<plugins>
 					<plugin>
