@@ -11,3 +11,13 @@ before_install:
  - sudo apt-get install -y libappindicator1 fonts-liberation
  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
  - sudo dpkg -i google-chrome*.deb
+after_failure:
+ - echo "Current directory is $(pwd)"
+ - echo "\n=== SUREFIRE REPORTS ===\n"
+ - for F in target/surefire-reports/*.txt;do echo $F;cat $F;echo ;done
+notifications:
+  email:
+    recipients:
+      - deepak.gupta@tothenew.com   
+    on_success: always
+    on_failure: always
