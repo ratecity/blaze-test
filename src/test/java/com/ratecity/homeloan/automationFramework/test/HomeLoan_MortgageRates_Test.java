@@ -16,8 +16,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class HomeLoan_MortgageRates_Test extends BaseClass {
 
-	/*@Test(priority=1,alwaysRun=true)
+	@Test(priority=1,alwaysRun=true)
 	public void Test_ToVerifyClearButtonFunctionality() throws Exception{
+		System.out.println("*************MR_ToVerifyClearButtonFunctionalit****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyClearButtonFunctionality");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(2);
@@ -33,6 +34,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 	}
 	@Test(priority=2,alwaysRun=true)
 	public void Test_toVerifyComparefunctionalityWith2Banks() throws Exception{
+		System.out.println("*************MR_VerifyComparefunctionalityWith2Banks****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyComparefunctionalityWith2Banks");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(2000);
@@ -53,6 +55,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 	
 	@Test(priority=3,alwaysRun=true)
 	public void Test_toVerifyRateTableHas20Records()throws Exception{
+		System.out.println("*************MR_VerifyRateTableHas20Records****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyRateTableHas20Records");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(2000);
@@ -67,6 +70,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 
 	@Test(priority=4,alwaysRun=true)
 	public void Test_toVerifyCompareWithBig4Button() throws Exception{
+		System.out.println("*************MR_VerifyCompareWithBig4Button****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyCompareWithBig4Button");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(2000);
@@ -86,6 +90,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 	}
 	@Test(priority=5,alwaysRun=true)
 	public void Test_toVerifyHomeLoanMortgagepage_SearchListing() throws Exception{
+		System.out.println("*************MR_VerifyHomeLoanMortgagepage_SearchListing****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyHomeLoanMortgagepage_SearchListing");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(2000);
@@ -119,5 +124,5 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 			Assert.assertTrue(false);
 		}
 	}
-*/
+
 }

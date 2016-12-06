@@ -104,15 +104,15 @@ public class BaseClass {
 			String screenshot_path = Utility.CaptureScreen(BaseClass.getDriver(), result.getName());
 			String image  = logger.addScreenCapture(screenshot_path);
 			logger.log(LogStatus.FAIL,"Snapshot below: " ,image);
-			 System.out.println("*******"+ result.getTestName()+" -: FAIL");
+			 System.out.println("*******"+ result.getMethod().getMethodName()+" -: FAIL");
 			//logger.log(LogStatus.FAIL,result.getThrowable().getMessage());
 		    driver.quit();
 		  }else if(result.getStatus()==ITestResult.SUCCESS){
-			  System.out.println("*******"+ result.getTestName()+" -: PASS");
+			  System.out.println("*******"+ result.getMethod().getMethodName()+" -: PASS");
 			  driver.quit();
 		  }
 		  else if(result.getStatus()==ITestResult.SKIP){
-			  System.out.println("*******"+ result.getTestName()+" -: SKIP");
+			  System.out.println("*******"+ result.getMethod().getMethodName()+" -: SKIP");
 			  driver.quit();
 		  }else{
 			  driver.quit();

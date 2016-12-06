@@ -8,10 +8,10 @@
 		</classes>
 	</test>
 
-	<!-- <test name="HomeLoanMortgageRatePage">
+	<test name="HomeLoanMortgageRatePage">
 		<classes>
 			<class
 				name="com.ratecity.homeloan.automationFramework.test.HomeLoan_MortgageRates_Test" />
 		</classes>
-	</test> -->
+	</test>
 </suite>

@@ -24,7 +24,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		Utility.GoToSleep(2000);
 	}*/
 
-	//@Test(priority=1,alwaysRun=true)
+	@Test(priority=1,alwaysRun=true)
 	public void Test_ToVerifyTopLinksAreWorking() throws Exception{
 		System.out.println("*************From ToVerifyTopLinksAreWorking****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopLinks");
@@ -127,7 +127,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		}
 	}
 
-	//@Test(priority=8,alwaysRun=true)
+	@Test(priority=8,alwaysRun=true)
 	public void Test_ToVerifyAdsRecordsArticles() throws IOException{
 		System.out.println("*************ToVerifyAdsRecordsArticles****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyAdsRecordsArticles");
@@ -160,8 +160,9 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Embed Window is not displayed");
 		}
 	}
-		/* @Test(priority=10,alwaysRun=true)
+		 @Test(priority=10,alwaysRun=true)
 	public void Test_ToVerifyTopMenuSubMenuisDisplayed()throws Exception{
+			 System.out.println("*************ToVerifyTopMenuSubMenuisDisplayed****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopMenuSubMenuisDisplayed");
 		if(HomeLoanLandingpage.fn_CheckIfMenuIsPresent("BORROW")){
 			if(HomeLoanLandingpage.fn_CheckIfMenuIsPresent("SAVE")){
@@ -195,6 +196,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	
 	@Test(priority=11,alwaysRun=true)
 	public void Test_ToVerifyFooterMenuisDisplayed() throws Exception{
+		 System.out.println("*************ToVerifyTopMenuSubMenuisDisplayed****************");	
 		logger=report.startTest("HomeLoanLandingPage_VerifyFooterMenuisDisplayed");
 		if(HomeLoanLandingpage.fn_VerifyFooterMenuisDisplayed()){
 			Assert.assertTrue(true);
@@ -207,6 +209,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	 
 	@Test(priority=12,alwaysRun=true)
 	public void Test_ToVerifyDisclaimerTextisDisplayed() throws Exception{
+		System.out.println("*************ToVerifyDisclaimerTextisDisplayed****************");	
 		logger=report.startTest("HomeLoanLandingPage_VerifyDisclaimerTextisDisplayed");
 		if(HomeLoanLandingpage.fn_DisclaimerisDisplayed()){
 			Assert.assertTrue(true);
@@ -219,6 +222,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	
 	@Test(priority=13,alwaysRun=true)
 	public void Test_ToVerifyRateCityLogoAndText()throws Exception{
+		System.out.println("*************ToVerifyRateCityLogoAndText****************");
 		logger=report.startTest("HomeLoanLandingPage_VerifyRateCityLogoAndText");
 		if(HomeLoanLandingpage.fn_VerifyRateCityLogoisDisplayed()){
 			if(HomeLoanLandingpage.fn_CopyRightedInfoIsPresent()){
@@ -236,6 +240,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	
 	@Test(priority=14,alwaysRun=true)
 	public void Test_ToVerifyAboutUsAndContactusLinks()throws Exception{
+		System.out.println("*************ToVerifyAboutUsAndContactusLinks****************");
 		logger=report.startTest("HomeLoanLandingPage_VerifyAboutUsAndContactusLinks");
 		if(HomeLoanLandingpage.fn_CheckAboutUsIsWorking()){
 			if(HomeLoanLandingpage.fn_CheckContactUsIsWorking()){
@@ -250,5 +255,4 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
 	}
-*/
 }
