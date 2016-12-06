@@ -9,6 +9,7 @@ import com.ratecity.homeloan.automationFramework.pages.HomeLoanComparisonpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanLandingpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
+import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
 
@@ -16,8 +17,14 @@ import com.relevantcodes.extentreports.LogStatus;
 
 
 public class HomeLoan_LandingPage_Test extends BaseClass {
+	
+	@Test
+	public void Test_LaunchBrowser(){
+		BaseClass.getDriver().get("https://lint.travis-ci.org/");
+		Utility.GoToSleep(2000);
+	}
 
-	@Test(priority=1)
+/*	@Test(priority=1)
 	public void Test_ToVerifyTopLinksAreWorking() throws Exception{
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopLinks");
 		if(HomeLoanLandingpage.fn_HomeLoanTopLinks()){
@@ -232,5 +239,5 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
 	}
-
+*/
 }
