@@ -101,6 +101,7 @@ public class BaseClass {
 	        String firefoxPath = getFirefoxPath();
 	       Logger staticLog = LoggerFactory.getLogger(BaseClass.class);
 	       staticLog.info("Firefox path: " + firefoxPath);
+	       System.out.println("***************"+firefoxPath);
 	 
 	        return new FirefoxBinary(new File(firefoxPath));
 	    }
