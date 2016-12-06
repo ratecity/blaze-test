@@ -24,7 +24,8 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class BaseClass {
-	public static WebDriver driver;
+	//public static WebDriver driver;
+	 private static FirefoxDriver driver;
 	public static RespositoryParser parser;
 	public  static ExtentReports report;
 	public  static ExtentTest logger;
