@@ -1,17 +1,21 @@
 package com.ratecity.homeloan.automationFramework.utilities;
 
-import java.io.File;
+import java.io.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
@@ -83,6 +87,33 @@ public class BaseClass {
 	   // getDriver().get(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
 		
 	}
+	 @BeforeClass
+	    public static void setUp() throws IOException {
+	        String travisCiFlag = System.getenv().get("TRAVIS");
+	        FirefoxBinary firefoxBinary = "true".equals(travisCiFlag)
+	                ? getFirefoxBinaryForTravisCi()
+	                : new FirefoxBinary();
+	 
+	        driver = new FirefoxDriver(firefoxBinary, new FirefoxProfile());
+	    }
+	 
+	    private static FirefoxBinary getFirefoxBinaryForTravisCi() throws IOException {
+	        String firefoxPath = getFirefoxPath();
+	       // Logger staticLog = LoggerFactory.getLogger(UseNewFirefoxOnTravisTest.class);
+	       System.out.println("****************FireFoxPath : = "+ firefoxPath);
+	 
+	        return new FirefoxBinary(new File(firefoxPath));
+	    }
+	 
+	    private static String getFirefoxPath() throws IOException {
+	        ProcessBuilder pb = new ProcessBuilder("which", "firefox");
+	        pb.redirectErrorStream(true);
+	        Process process = pb.start();
+	        try (InputStreamReader isr = new InputStreamReader(process.getInputStream(), "UTF-8");
+	             BufferedReader br = new BufferedReader(isr)) {
+	            return br.readLine();
+	        }
+	    }
 
 	@BeforeMethod
 	  public void fn_Launchbrowser() throws IOException{
