@@ -103,7 +103,7 @@ public class BaseClass {
 	       staticLog.info("Firefox path: " + firefoxPath);
 	       System.out.println("***************"+firefoxPath);
 	 
-	        return new FirefoxBinary(new File(firefoxPath));
+	        return new FirefoxBinary(new File("/home/travis/firefox-50.0/firefox/bin"));
 	    }
 	 
 	    private static String getFirefoxPath() throws IOException {
