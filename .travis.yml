@@ -3,9 +3,14 @@ jdk:
   - oraclejdk8
 
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 
+ - export CHROME_BIN=/usr/bin/google-chrome
+ - sudo apt-get update
+ - sudo apt-get install -y libappindicator1 fonts-liberation
+ - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+ - sudo dpkg -i google-chrome*.deb
+ - xvfb -ac :99 -screen 0 1280x1024x16
+ - export DISPLAY=:99.0
+ - sh -e /etc/init.d/xvfb start
 
 after_failure:
  - echo "Current directory is $(pwd)"

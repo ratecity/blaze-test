@@ -86,8 +86,8 @@ public class BaseClass {
 
 	@BeforeMethod
 	  public void fn_Launchbrowser() throws IOException{
-		//  System.setProperty(Utility.fn_ReaddataFronPropFile("chromeDriver"), Utility.fn_ReaddataFronPropFile("chromeDriverpath"));
-		  driver  = new FirefoxDriver();
+		  System.setProperty(Utility.fn_ReaddataFronPropFile("chromeDriver"), Utility.fn_ReaddataFronPropFile("chromeDriverpath"));
+		  driver  = new ChromeDriver();
 		  driver.manage().timeouts().implicitlyWait(Integer.parseInt(Utility.fn_ReaddataFronPropFile("implicit_wait")), TimeUnit.SECONDS);
 		  driver.manage().window().maximize();
 		  driver.manage().deleteAllCookies();
