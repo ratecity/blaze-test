@@ -9,7 +9,6 @@ import com.ratecity.homeloan.automationFramework.pages.HomeLoanComparisonpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanLandingpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
-import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
 
@@ -18,15 +17,16 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class HomeLoan_LandingPage_Test extends BaseClass {
 	
-	@Test
+	/*@Test
 	public void Test_LaunchBrowser(){
 		BaseClass.getDriver().get("https://lint.travis-ci.org/");
 		System.out.println("From Test method");
 		Utility.GoToSleep(2000);
-	}
+	}*/
 
-/*	@Test(priority=1)
+	@Test(priority=1)
 	public void Test_ToVerifyTopLinksAreWorking() throws Exception{
+		System.out.println("*************From ToVerifyTopLinksAreWorking****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopLinks");
 		if(HomeLoanLandingpage.fn_HomeLoanTopLinks()){
 			Assert.assertTrue(true);
@@ -39,6 +39,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 
 	@Test(priority=2)
 	public void Test_ToVerifyMax5ProductsOnCompareBar() throws Exception{
+		System.out.println("*************ToVerifyMax5ProductsOnCompareBar****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyMax5ProductsOnCompareBar");
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(5);
 		if(HomeLoanLandingpage.fn_CountvaluesOnComparebar()==5){
@@ -79,7 +80,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=5)
+	//@Test(priority=5)
 	public void Test_ToVerifyHomeLoantoolsAreworking(){
 		logger=report.startTest("HomeLoanLandingPage_VerifyHomeLoantoolsAreworking");
 		if(HomeLoanLandingpage.fn_HomeLoanTools()){
@@ -240,5 +241,5 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
 	}
-*/
+
 }
