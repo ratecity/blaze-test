@@ -24,8 +24,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class BaseClass {
-	//public static WebDriver driver;
-	 private static FirefoxDriver driver;
+	public static WebDriver driver;
 	public static RespositoryParser parser;
 	public  static ExtentReports report;
 	public  static ExtentTest logger;
@@ -145,6 +144,7 @@ public class BaseClass {
 		  }
 		  else if(result.getStatus()==ITestResult.SKIP){
 			  System.out.println("*******"+ result.getMethod().getMethodName()+" -: SKIP");
+			 
 			  driver.quit();
 		  }else{
 			  driver.quit();
