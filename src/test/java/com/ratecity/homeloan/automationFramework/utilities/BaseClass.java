@@ -99,7 +99,7 @@ public class BaseClass {
 	 
 	    private static FirefoxBinary getFirefoxBinaryForTravisCi() throws IOException {
 	        String firefoxPath = getFirefoxPath();
-	       // Logger staticLog = LoggerFactory.getLogger(UseNewFirefoxOnTravisTest.class);
+	       Logger staticLog = LoggerFactory.getLogger(BaseClass.class);
 	       System.out.println("****************FireFoxPath : = "+ firefoxPath);
 	 
 	        return new FirefoxBinary(new File(firefoxPath));
