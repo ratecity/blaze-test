@@ -127,7 +127,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=8,alwaysRun=true)
+	//@Test(priority=8,alwaysRun=true)
 	public void Test_ToVerifyAdsRecordsArticles() throws IOException{
 		System.out.println("*************ToVerifyAdsRecordsArticles****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyAdsRecordsArticles");
@@ -145,8 +145,9 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			Assert.assertTrue(false, "HomeLoan page is not landed successfully");
 		}
 	}
-	/*	@Test(priority=9,alwaysRun=true)
+		@Test(priority=9,alwaysRun=true)
 	public void Test_ToVerifyEmbedButtonFunctionality() throws Exception{
+	System.out.println("*************ToVerifyEmbedButtonFunctionality****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyEmbedButtonFunctionality");
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(2);
 		HomeLoanMortgageRates.fn_ClickOnCompareButton();
@@ -159,7 +160,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Embed Window is not displayed");
 		}
 	}
-	@Test(priority=10,alwaysRun=true)
+		/* @Test(priority=10,alwaysRun=true)
 	public void Test_ToVerifyTopMenuSubMenuisDisplayed()throws Exception{
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopMenuSubMenuisDisplayed");
 		if(HomeLoanLandingpage.fn_CheckIfMenuIsPresent("BORROW")){
