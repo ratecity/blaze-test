@@ -100,7 +100,7 @@ public class BaseClass {
 	    private static FirefoxBinary getFirefoxBinaryForTravisCi() throws IOException {
 	        String firefoxPath = getFirefoxPath();
 	       Logger staticLog = LoggerFactory.getLogger(BaseClass.class);
-	       System.out.println("****************FireFoxPath : = "+ firefoxPath);
+	       staticLog.info("Firefox path: " + firefoxPath);
 	 
 	        return new FirefoxBinary(new File(firefoxPath));
 	    }
@@ -109,6 +109,7 @@ public class BaseClass {
 	        ProcessBuilder pb = new ProcessBuilder("which", "firefox");
 	        pb.redirectErrorStream(true);
 	        Process process = pb.start();
+	        System.out.println("*****************"+process.toString());
 	        try (InputStreamReader isr = new InputStreamReader(process.getInputStream(), "UTF-8");
 	             BufferedReader br = new BufferedReader(isr)) {
 	            return br.readLine();
