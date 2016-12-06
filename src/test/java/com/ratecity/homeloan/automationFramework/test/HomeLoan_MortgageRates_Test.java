@@ -16,7 +16,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class HomeLoan_MortgageRates_Test extends BaseClass {
 
-	@Test(priority=1)
+	@Test(priority=1,alwaysRun=true)
 	public void Test_ToVerifyClearButtonFunctionality() throws Exception{
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyClearButtonFunctionality");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -31,7 +31,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.PASS,"Compare CheckBox is not Selected"); 
 		}
 	}
-	@Test(priority=2)
+	@Test(priority=2,alwaysRun=true)
 	public void Test_toVerifyComparefunctionalityWith2Banks() throws Exception{
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyComparefunctionalityWith2Banks");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -51,7 +51,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3,alwaysRun=true)
 	public void Test_toVerifyRateTableHas20Records()throws Exception{
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyRateTableHas20Records");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -65,7 +65,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=4)
+	@Test(priority=4,alwaysRun=true)
 	public void Test_toVerifyCompareWithBig4Button() throws Exception{
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyCompareWithBig4Button");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -84,7 +84,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 
 		}
 	}
-	@Test(priority=5)
+	@Test(priority=5,alwaysRun=true)
 	public void Test_toVerifyHomeLoanMortgagepage_SearchListing() throws Exception{
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyHomeLoanMortgagepage_SearchListing");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
