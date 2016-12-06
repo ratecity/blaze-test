@@ -21,6 +21,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	@Test
 	public void Test_LaunchBrowser(){
 		BaseClass.getDriver().get("https://lint.travis-ci.org/");
+		System.out.println("From Test method");
 		Utility.GoToSleep(2000);
 	}
 
