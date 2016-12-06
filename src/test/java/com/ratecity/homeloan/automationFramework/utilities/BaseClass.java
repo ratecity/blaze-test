@@ -101,9 +101,9 @@ public class BaseClass {
 	        String firefoxPath = getFirefoxPath();
 	       Logger staticLog = LoggerFactory.getLogger(BaseClass.class);
 	       staticLog.info("Firefox path: " + firefoxPath);
-	       System.out.println("***************"+firefoxPath);
+	       System.out.println("***********************************"+firefoxPath);
 	 
-	        return new FirefoxBinary(new File("/home/travis/firefox-50.0/firefox/bin"));
+	        return new FirefoxBinary(new File(firefoxPath));
 	    }
 	 
 	    private static String getFirefoxPath() throws IOException {
