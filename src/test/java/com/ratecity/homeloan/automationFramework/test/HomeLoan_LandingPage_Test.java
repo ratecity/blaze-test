@@ -39,7 +39,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 
 	@Test(priority=2,alwaysRun=true)
 	public void Test_ToVerifyMax5ProductsOnCompareBar() throws Exception{
-		System.out.println("*************ToVerifyMax5ProductsOnCompareBar****************_");
+		System.out.println("*************3****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyMax5ProductsOnCompareBar");
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(5);
 		if(HomeLoanLandingpage.fn_CountvaluesOnComparebar()==5){
@@ -58,6 +58,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 
 	@Test(priority=3,alwaysRun=true)
 	public void Test_ToVerifyCompanyProductslinksAreWorking() throws Exception{
+		System.out.println("*************From ToVerifyTopLinksAreWorking****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyCompanyProductslinksAreWorking");
 		if(HomeLoanLandingpage.fn_CheckCompany_ProductLink()){
 			Assert.assertTrue(true);
@@ -69,7 +70,9 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	}
 
 	@Test(priority=4,alwaysRun=true)
+
 	public void Test_ToVerifyBrowseMoreLinkisWorking() throws Exception{
+		System.out.println("*************From 4****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyBrowseMoreLinkisWorking");
 		if(HomeLoanLandingpage.fn_CheckBrowseMoreLink()){
 			Assert.assertTrue(true);
@@ -92,7 +95,9 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		}
 	}
 	@Test(priority=6,alwaysRun=true)
+	
 	public void Test_ToVerifyHomeLoanNewsAreWorking() throws Exception{
+		System.out.println("*************From5****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyHomeLoanNewsAreWorking");
 		if(HomeLoanLandingpage.fn_HomeLoanNews()){
 			Assert.assertTrue(true);
@@ -103,7 +108,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		} 
 	}
 
-	@Test(priority=7,alwaysRun=true)
+	/*@Test(priority=7,alwaysRun=true)
 	public void Test_ToVerifyContentLinksAndPopularHomeLoanLinks()throws Exception{
 		logger=report.startTest("HomeLoanLandingPage_VerifyContentLinksAndPopularHomeLoanLinks");
 		if(HomeLoanLandingpage.fn_CheckIfArticlesLinksAreWorking()){
@@ -241,5 +246,5 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
 	}
-
+*/
 }
