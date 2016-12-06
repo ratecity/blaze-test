@@ -16,7 +16,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class HomeLoan_MortgageRates_Test extends BaseClass {
 
-	@Test(priority=1)
+	/*@Test(priority=1)
 	public void Test_ToVerifyClearButtonFunctionality() throws Exception{
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyClearButtonFunctionality");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -120,4 +120,4 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 
-}
+*/}
