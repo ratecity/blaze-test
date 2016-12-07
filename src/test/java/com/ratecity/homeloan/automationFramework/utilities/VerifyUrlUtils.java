@@ -25,7 +25,7 @@ public class VerifyUrlUtils {
 			put("Under 4% club", "Under 4 club loans"); 
 			put("LOW DOC Home Loans", "Low Doc Home Loans"); 
 			put("Low Interest Mortgage", "Lowest Home Loan Rates"); 
-			put("Best Mortgage", "Best Home Loans"); 
+			put("Best Mortgage", "Best Mortgages"); 
 			put("Home Loan Ratings", " Home Loan Rates"); 
 			put("First Mortgage", "First home loan rates"); 
 			put("Compare Home Loans", "Home Loan Comparison"); 
