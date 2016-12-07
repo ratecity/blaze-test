@@ -61,8 +61,9 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
 			element =  BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareButton"));
-			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
-			((JavascriptExecutor) BaseClass.getDriver()).executeScript(js, element);
+			JavascriptExecutor jse = (JavascriptExecutor)BaseClass.getDriver();
+			jse.executeScript("arguments[0].scrollIntoView()", element); 
+			Utility.GoToSleep(1000);
 			element.click();
 			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
@@ -82,6 +83,7 @@ public class HomeLoanMortgageRates {
 					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
 			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
 			((JavascriptExecutor) BaseClass.getDriver()).executeScript(js, element);
+			Utility.GoToSleep(1000);
 			element.click();
 				//	Utility.clickAndWait(element,1000);
 					return new HomeLoanComparisonpage();
