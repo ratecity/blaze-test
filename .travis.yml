@@ -3,17 +3,18 @@ jdk:
   - oraclejdk8
 script:
 - mvn clean package
-
-"sudo": "required"
-"dist": "trusty"
-
-before_script:
-  -   "export DISPLAY=:99.0"
-  -   "sh -e /etc/init.d/xvfb start"
-  -   sleep 3 # give xvfb some time to start
+sudo: required
+dist: trusty
 addons:
-  "firefox": "latest"
-
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+before_script:
+- export CHROME_BIN=$(which google-chrome-stable)
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 after_failure:
  - cat $TRAVIS_BUILD_DIR/target/surefire-reports/*
  - echo "Current directory is $(pwd)"
