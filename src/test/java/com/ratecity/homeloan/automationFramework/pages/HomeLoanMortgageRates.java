@@ -33,9 +33,8 @@ public class HomeLoanMortgageRates {
 	
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.MortgageRate"));
-		System.out.println("**************From Compare CheckBox******");
 		for (int i=0;i<value;i++) {
-			//Utility.scrollToElement(we.get(i));
+			Utility.scrollToElement(we.get(i));
 			Utility.selectcheckbox(we.get(i));
 			//we.get(i).click();
 			Utility.GoToSleep(1000);
