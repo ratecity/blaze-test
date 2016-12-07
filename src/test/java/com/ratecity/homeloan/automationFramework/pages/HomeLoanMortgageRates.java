@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
@@ -58,7 +60,9 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
 			element =  BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareButton"));
-			Utility.clickAndWait(element, 1000);
+			Actions action = new Actions(BaseClass.getDriver());
+			action.moveToElement(element).click().perform();
+			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
 		}
 		return null;
@@ -74,7 +78,9 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : CompareWithBig4Button button is visible");
 			element = BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
-					Utility.clickAndWait(element,1000);
+			Actions action = new Actions(BaseClass.getDriver());
+			action.moveToElement(element).click().perform();
+				//	Utility.clickAndWait(element,1000);
 					return new HomeLoanComparisonpage();
 		}
 		return null;
