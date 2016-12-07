@@ -10,6 +10,4 @@ nohup.out
 test-output/
 ScreenShots/
 Reports/
-
-
-/target/
+target/
