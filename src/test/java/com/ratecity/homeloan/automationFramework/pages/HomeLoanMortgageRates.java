@@ -207,6 +207,10 @@ public class HomeLoanMortgageRates {
        for (WebElement webElement : Ad_RateText) {
     	   Utility.GoToSleep(3000);
 		if(!webElement.getText().equalsIgnoreCase(textToBeFound)){
+			if(webElement.getText().contains("Intro")){
+				flag=false;
+				break;
+			}
 			Utility.scrollToElement(webElement);
 			Utility.highlightElementBorder(webElement);
 			flag=true;

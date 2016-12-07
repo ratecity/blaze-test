@@ -215,15 +215,21 @@ public class Utility {
 	public  static boolean isElementPresentAndDisplay( By by) {
 		boolean flag=false;
 		try {
-			BaseClass.getDriver().findElement(by).isDisplayed();
-			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
-			return flag;
+			if(BaseClass.getDriver().findElement(by).isDisplayed()){
+				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
+				return flag;	
+			}
+			
 		} catch (NoSuchElementException e) {
-			GoToSleep(2000);
+			GoToSleep(3000);
+			System.out.println("*********************Going for sleep");
 			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Going for sleep & wait sometime for the element to be displayed");
-			BaseClass.getDriver().findElement(by).isDisplayed();
+			if(BaseClass.getDriver().findElement(by).isDisplayed()){
+			 return flag=true;
+			}
+			
 		}
-		BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element not found after given time");
+		//BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element not found after given time");
 		return false;
 	}
 
