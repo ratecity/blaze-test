@@ -145,6 +145,7 @@ public class HomeLoanLandingpage {
 		boolean flag=false;
 		homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.LoanTypes"));
+		System.out.println("**********"+ homeloanType.toString());
 		for(int i=0;i<homeloanType.size()-1;i++){
 			if(!Utility.isLinkBroken(new URL(homeloanType.get(i).getAttribute("href")))){
 				BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is not working");
@@ -152,10 +153,17 @@ public class HomeLoanLandingpage {
 			}
 			else{ 
 				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is landed Successfully!!");
-				homeloanType.get(i).click();
-				Utility.GoToSleep(2000);
-				BaseClass.getDriver().navigate().back();
-				flag=true;
+				if(homeloanType.get(i).isDisplayed()){
+					homeloanType.get(i).click();
+					Utility.GoToSleep(2000);
+					BaseClass.getDriver().navigate().back();
+					flag=true;
+				}else{
+					homeloanType.get(i+1).click();
+					Utility.GoToSleep(2000);
+					BaseClass.getDriver().navigate().back();
+					flag=true;
+				}
 			}
 			homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.LoanTypes"));
