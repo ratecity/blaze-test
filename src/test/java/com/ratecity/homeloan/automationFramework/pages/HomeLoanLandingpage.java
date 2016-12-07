@@ -146,6 +146,7 @@ public class HomeLoanLandingpage {
 		homeloanType = BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.LoanTypes"));
 		for(int i=0;i<homeloanType.size()-1;i++){
+			
 			if(!Utility.isLinkBroken(new URL(homeloanType.get(i).getAttribute("href")))){
 				BaseClass.logger.log(LogStatus.ERROR, "INTO METHOD==>fn_HomeLoanTopLinks : "+homeloanType.get(i).getAttribute("href")+" is not working");
 				break;
