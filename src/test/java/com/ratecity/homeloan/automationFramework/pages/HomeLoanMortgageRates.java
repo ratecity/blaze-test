@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -60,8 +61,9 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
 			element =  BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareButton"));
-			Actions action = new Actions(BaseClass.getDriver());
-			action.moveToElement(element).click().perform();
+			JavascriptExecutor js =(JavascriptExecutor)BaseClass.getDriver();
+	        js.executeScript("window.scrollTo(0,'element.getLocation().x+')");
+	        element.click();
 			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
 		}
@@ -78,8 +80,9 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : CompareWithBig4Button button is visible");
 			element = BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
-			Actions action = new Actions(BaseClass.getDriver());
-			action.moveToElement(element).click().perform();
+			JavascriptExecutor js =(JavascriptExecutor)BaseClass.getDriver();
+	        js.executeScript("window.scrollTo(0,'element.getLocation().y+')");
+	        element.click();
 				//	Utility.clickAndWait(element,1000);
 					return new HomeLoanComparisonpage();
 		}
