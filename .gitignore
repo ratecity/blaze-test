@@ -9,4 +9,7 @@ nohup.out
 .settings/
 test-output/
 ScreenShots/
+Reports/
 
+
+/target/
