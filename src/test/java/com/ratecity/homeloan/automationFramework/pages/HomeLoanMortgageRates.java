@@ -30,7 +30,7 @@ public class HomeLoanMortgageRates {
 	}
 	
 	public static void fn_ClickOnCompareCheckbox(int value)throws Exception{
-	
+	    Utility.GoToSleep(2000);
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.MortgageRate"));
 		for (int i=0;i<value;i++) {

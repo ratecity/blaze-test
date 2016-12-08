@@ -37,7 +37,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		System.out.println("*************MR_VerifyComparefunctionalityWith2Banks****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyComparefunctionalityWith2Banks");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
-		Utility.GoToSleep(2000);
+		Utility.GoToSleep(3000);
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(2);
 		HomeLoanMortgageRates.fn_ClickOnCompareButton();
 		if(HomeLoanComparisonpage.fn_VerifyHomeLoanText()){
@@ -58,7 +58,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		System.out.println("*************MR_VerifyRateTableHas20Records****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyRateTableHas20Records");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
-		Utility.GoToSleep(2000);
+		Utility.GoToSleep(3000);
 		if(HomeLoanMortgageRates.fn_CheckNumberOfRateRecord()==20){
 			Assert.assertTrue(true); 
 			BaseClass.logger.log(LogStatus.PASS, "20 Records are getting displayed");
