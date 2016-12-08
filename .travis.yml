@@ -20,9 +20,12 @@ after_failure:
  - echo "Current directory is $(pwd)"
  - echo "\n=== SUREFIRE REPORTS ===\n"
  - for F in target/surefire-reports/*.txt;do echo $F;cat $F;echo ;done
+ - scp -r  /home/travis/build/DeepakToTheNew/blaze-test/Reports deepak@10.1.13.184:/home/deepak
+-  echo "igdefault"
+
 notifications:
   email:
-    recipients:
+    recipients:	
       - deepak.gupta@tothenew.com   
     on_success: always
     on_failure: always
