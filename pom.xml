@@ -88,7 +88,7 @@
 					<!-- host -->
 					<mailhost>smtp.gmail.com</mailhost>
 					<!-- port of the host -->
-					<mailport>587</mailport>
+					<mailport>465</mailport>
 					<mailssl>true</mailssl>
 					<mailAltConfig>true</mailAltConfig>
 					
