@@ -19,7 +19,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	
 	
 
-	/*@Test(priority=1,alwaysRun=true)
+	@Test(priority=1,alwaysRun=true)
 	public void Test_ToVerifyTopLinksAreWorking() throws Exception{
 		System.out.println("*************From ToVerifyTopLinksAreWorking****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopLinks");
@@ -30,7 +30,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			Assert.assertTrue(false,"Links are not working");
 			BaseClass.logger.log(LogStatus.FAIL,"All Top links not are working");
 		}
-	}*/
+	}
 
 	@Test(priority=2,alwaysRun=true)
 	public void Test_ToVerifyMax5ProductsOnCompareBar() throws Exception{
@@ -51,7 +51,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		}
 	}
 
-	/*@Test(priority=3,alwaysRun=true)
+	@Test(priority=3,alwaysRun=true)
 	public void Test_ToVerifyCompanyProductslinksAreWorking() throws Exception{
 		System.out.println("*************From ToVerifyCompanyProductslinksAreWorking****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyCompanyProductslinksAreWorking");
@@ -250,4 +250,4 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
 	}
-*/}
+}
