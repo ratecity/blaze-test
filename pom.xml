@@ -79,6 +79,7 @@
 
 							<from>testRateCity@gmail.com</from>
 							<subject>Test Automation Report</subject>
+							 <groovyCondition><![CDATA[failures]]></groovyCondition>
 							<failonerror>true</failonerror>
 							<mailhost>smtp.gmail.com</mailhost>
 							<mailport>465</mailport>
