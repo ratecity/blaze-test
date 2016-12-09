@@ -42,7 +42,7 @@ public class Utility {
 	
 		String dest=null;
 		BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> CaptureScreenShot and Return path");
-		TakesScreenshot oScn = (TakesScreenshot) BaseClass.getDriver();
+		TakesScreenshot oScn = (TakesScreenshot)driver;
 		File oScnShot = oScn.getScreenshotAs(OutputType.FILE);
 		File file = new File(System.getProperty("user.dir")+File.separator+"ScreenShots");
 		if (!file.exists()) {
