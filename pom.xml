@@ -94,7 +94,7 @@
 							<fileSets>
 								<fileSet>
 									<!-- Report directory Path -->
-									<directory>/home/deepak/Test/blaze-test/Reports</directory>
+									<directory>/home/travis/build/DeepakToTheNew/blaze-test/Reports</directory>
 									<includes>
 										Report file name
 										<include>TestReport.html</include>
