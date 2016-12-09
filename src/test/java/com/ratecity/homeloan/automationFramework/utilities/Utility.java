@@ -252,10 +252,12 @@ public class Utility {
 	 * @throws IOException
 	 */
 	public static void selectcheckbox(String locator) throws IOException {
+		By by=new RespositoryParser().getobjectLocator(locator);
 		try {
-			if (!BaseClass.getDriver().findElement(new RespositoryParser().getobjectLocator(locator))
-					.isSelected()) {
+			if (!BaseClass.getDriver().findElement(by).isSelected()) {
+				System.out.println(">>>>>>>>>>>>>>>ElementIsNotSelected<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 				BaseClass.getDriver().findElement(new RespositoryParser().getobjectLocator(locator)).click();
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is selected now*****");
 			} else {
 				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is already selected*****");
