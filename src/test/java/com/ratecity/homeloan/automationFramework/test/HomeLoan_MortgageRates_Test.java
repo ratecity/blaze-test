@@ -53,7 +53,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 	
-	@Test(priority=3,alwaysRun=true)
+	//@Test(priority=3,alwaysRun=true)
 	public void Test_toVerifyRateTableHas20Records()throws Exception{
 		System.out.println("*************MR_VerifyRateTableHas20Records****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyRateTableHas20Records");
@@ -88,7 +88,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 
 		}
 	}
-	@Test(priority=5,alwaysRun=true)
+	//@Test(priority=5,alwaysRun=true)
 	public void Test_toVerifyHomeLoanMortgagepage_SearchListing() throws Exception{
 		System.out.println("*************MR_VerifyHomeLoanMortgagepage_SearchListing****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyHomeLoanMortgagepage_SearchListing");
