@@ -62,7 +62,7 @@
 				</configuration>
 			</plugin>
 			<!-- Post-Man plugin -->
-		<plugin>
+		<!-- <plugin>
 			<groupId>ch.fortysix</groupId>
 			<artifactId>maven-postman-plugin</artifactId>
 			<executions>
@@ -76,47 +76,47 @@
 				<inherited>true</inherited>
 				
 				<configuration>
-					<!-- From Email address -->
+					From Email address
 					<from>Deepak3991@gmail.com</from>
 					
-					<!--  Email subject -->
+					 Email subject
 					<subject>Test Automation Report</subject>
 					
-					<!-- Fail the build if the mail doesnt reach -->
+					Fail the build if the mail doesnt reach
 					<failonerror>true</failonerror>
 					
-					<!-- host -->
+					host
 					<mailhost>smtp.gmail.com</mailhost>
-					<!-- port of the host -->
+					port of the host
 					<mailport>465</mailport>
 					<mailssl>true</mailssl>
 					<mailAltConfig>true</mailAltConfig>
 					
-					<!-- Email Authentication(USername and Password) -->
+					Email Authentication(USername and Password)
 					<mailuser>Deepak3991@gmail.com</mailuser>
 					<mailpassword>Automate@123#</mailpassword>
 					
 					<receivers>
-						<!-- To Email address -->
+						To Email address
 						<receiver>Deepak.gupta@tothenew.com</receiver>
 					</receivers>
 					
 					<fileSets>
 					<fileSet>
-						<!-- Report directory Path -->
+						Report directory Path
 						<directory>/home/deepak/Test/blaze-test/Reports</directory>
 						<includes>
-							<!-- Report file name -->
+							Report file name
 							<include>TestReport.html</include>
 						</includes>
-						<!-- Use Regular Expressions like **/*.html if you want all the html files to send-->
+						Use Regular Expressions like **/*.html if you want all the html files to send
 						</fileSet>
 					</fileSets>				
 				
 				</configuration>
 				</execution>
 			</executions>
-		</plugin>
+		</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
