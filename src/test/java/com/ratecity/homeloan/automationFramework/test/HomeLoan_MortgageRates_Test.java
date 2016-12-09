@@ -16,7 +16,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class HomeLoan_MortgageRates_Test extends BaseClass {
 
-	@Test(priority=1,alwaysRun=true)
+	@Test(priority=3,alwaysRun=true)
 	public void Test_ToVerifyClearButtonFunctionality() throws Exception{
 		System.out.println("*************MR_ToVerifyClearButtonFunctionalit****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyClearButtonFunctionality");
@@ -28,11 +28,11 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 			Assert.assertTrue(false);
 
 		}else{
-			Assert.assertTrue(true,"Check Box is Still Selected");
+			Assert.assertTrue(true,"Check Box is not Selected");
 			BaseClass.logger.log(LogStatus.PASS,"Compare CheckBox is not Selected"); 
 		}
 	}
-	@Test(priority=2,alwaysRun=true)
+	@Test(priority=1,alwaysRun=true)
 	public void Test_toVerifyComparefunctionalityWith2Banks() throws Exception{
 		System.out.println("*************MR_VerifyComparefunctionalityWith2Banks****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyComparefunctionalityWith2Banks");
@@ -68,7 +68,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=4,alwaysRun=true)
+	@Test(priority=2,alwaysRun=true)
 	public void Test_toVerifyCompareWithBig4Button() throws Exception{
 		System.out.println("*************MR_VerifyCompareWithBig4Button****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyCompareWithBig4Button");
