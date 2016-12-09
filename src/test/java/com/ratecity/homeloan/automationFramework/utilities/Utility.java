@@ -17,6 +17,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -317,7 +318,8 @@ public class Utility {
 	public static void selectcheckbox(WebElement we) {
 		try {
 			if (we.isDisplayed() && !we.isSelected()) {
-				we.click();
+				Actions action = new Actions(BaseClass.getDriver());
+				action.moveToElement(we).click().perform();
 				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Checkbox is selected");
 			} else {
 				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Checkbox is already selected");

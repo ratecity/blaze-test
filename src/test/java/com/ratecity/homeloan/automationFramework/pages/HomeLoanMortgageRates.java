@@ -33,13 +33,10 @@ public class HomeLoanMortgageRates {
 	    Utility.GoToSleep(2000);
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.MortgageRate"));
-		for (WebElement webElement : we) {
-			System.out.println(webElement.isSelected());
-		}
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
-			//Utility.selectcheckbox(we.get(i));
-			  we.get(i).click();
+			Utility.selectcheckbox(we.get(i));
+			//  we.get(i).click();
 			Utility.GoToSleep(2000);
 		}
 	}
