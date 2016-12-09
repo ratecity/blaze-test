@@ -88,20 +88,20 @@
 					<!-- host -->
 					<mailhost>smtp.gmail.com</mailhost>
 				<!-- 	port of the host -->
-					<mailport>465</mailport>
-					<mailssl>true</mailssl>
+					<mailport>587</mailport>
+					<mailssl>false</mailssl>
 					<mailAltConfig>true</mailAltConfig>
 					
 					<!-- Email Authentication(USername and Password) -->
-					<mailuser>Deepak3991@gmail.com</mailuser>
-					<mailpassword>Automate@123#</mailpassword>
+					<mailuser>testRateCity@gmail.com</mailuser>
+					<mailpassword>Qwerty@123#</mailpassword>
 					<receivers>
 						To Email address
 						<receiver>Deepak.gupta@tothenew.com</receiver>
 					</receivers>
 					<fileSets>
 					<fileSet>
-						Report directory Path
+						<!-- Report directory Path -->
 						<directory>/home/deepak/Test/blaze-test/Reports</directory>
 						<includes>
 							Report file name
