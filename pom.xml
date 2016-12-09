@@ -89,7 +89,7 @@
 					<mailhost>smtp.gmail.com</mailhost>
 				<!-- 	port of the host -->
 					<mailport>587</mailport>
-					<mailssl>false</mailssl>
+					<mailtls>true</mailtls>
 					<mailAltConfig>true</mailAltConfig>
 					
 					<!-- Email Authentication(USername and Password) -->
