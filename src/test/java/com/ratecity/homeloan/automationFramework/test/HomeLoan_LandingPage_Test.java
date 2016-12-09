@@ -9,6 +9,7 @@ import com.ratecity.homeloan.automationFramework.pages.HomeLoanComparisonpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanLandingpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
+import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
 
@@ -17,12 +18,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class HomeLoan_LandingPage_Test extends BaseClass {
 	
-	/*@Test
-	public void Test_LaunchBrowser(){
-		BaseClass.getDriver().get("https://lint.travis-ci.org/");
-		System.out.println("From Test method");
-		Utility.GoToSleep(2000);
-	}*/
+	
 
 	@Test(priority=1,alwaysRun=true)
 	public void Test_ToVerifyTopLinksAreWorking() throws Exception{

@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -66,12 +65,14 @@ public class BaseClass {
 		File file = new File(System.getProperty("user.dir")+File.separator+"Reports");
 		if (!file.exists()) {
             if (file.mkdir()) {
-            	report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
+            	//report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
+            	report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"TestReport"+".html");
             } else {
                BaseClass.logger.log(LogStatus.ERROR, "INTO Method Test Report ==> Failed to create directory in specified position");
             }
 		}else
-		report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
+		//report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"AutomationReport : "+timeStamp+".html");
+			report=new ExtentReports(System.getProperty("user.dir")+File.separator+"Reports"+File.separator+"TestReport"+".html");
 		
 	}
 	
