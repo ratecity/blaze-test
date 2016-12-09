@@ -81,9 +81,9 @@
 							<subject>Test Automation Report</subject>
 							<failonerror>true</failonerror>
 							<mailhost>smtp.gmail.com</mailhost>
-							<!-- <mailport>587</mailport> -->
-							<!-- <mailssl>false</mailssl> -->
-							<!-- <mailAltConfig>true</mailAltConfig> -->
+							<mailport>465</mailport>
+							<mailssl>true</mailssl>
+							<mailAltConfig>true</mailAltConfig>
 
 							<!-- Email Authentication(USername and Password) -->
 							<mailuser>testRateCity@gmail.com</mailuser>

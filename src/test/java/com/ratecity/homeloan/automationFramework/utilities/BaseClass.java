@@ -80,6 +80,7 @@ public class BaseClass {
 	@AfterSuite	
 	public void testtearDown()
 	{
+		System.out.println("***********************"+ System.getProperty("user.dir")+File.separator+"Reports");
 		report.endTest(logger);
 		report.flush();
 	
