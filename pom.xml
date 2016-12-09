@@ -79,7 +79,6 @@
 
 							<from>testRateCity@gmail.com</from>
 							<subject>Test Automation Report</subject>
-							 <groovyCondition><![CDATA[failures]]></groovyCondition>
 							<failonerror>true</failonerror>
 							<mailhost>smtp.gmail.com</mailhost>
 							<mailport>465</mailport>
@@ -116,6 +115,8 @@
 						<!-- TestNG suite XML files -->
 						<suiteXmlFile>TestNG.xml</suiteXmlFile>
 					</suiteXmlFiles>
+					 <testErrorIgnore>true</testErrorIgnore>
+                <testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 
