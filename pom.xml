@@ -94,10 +94,10 @@
 							<fileSets>
 								<fileSet>
 									<!-- Report directory Path -->
-									<directory>/home/travis/build/DeepakToTheNew/blaze-test/Reports</directory>
+									<directory>/home/travis/build/DeepakToTheNew/blaze-test/target/surefire-reports</directory>
 									<includes>
 										Report file name
-										<include>TestReport.html</include>
+										<include>index.html</include>
 									</includes>
 									<!-- Use Regular Expressions like **/*.html if you want all the 
 										html files to send -->

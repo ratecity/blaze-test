@@ -15,11 +15,7 @@ before_script:
 - export CHROME_BIN=$(which google-chrome-stable)
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-after_failure:
- - cat $TRAVIS_BUILD_DIR/target/surefire-reports/*
- - echo "Current directory is $(pwd)"
- - echo "\n=== SUREFIRE REPORTS ===\n"
- - for F in target/surefire-reports/*.txt;do echo $F;cat $F;echo ;done
+
 notifications:
   email:
     recipients:
