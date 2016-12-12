@@ -58,7 +58,8 @@ public class HomeLoanMortgageRates {
 	}
 	public static HomeLoanComparisonpage fn_ClickOnCompareButton() throws Exception{
 		
-		if(Utility.isElementPresentAndDisplay(new RespositoryParser()
+		try{
+			if(Utility.isElementPresentAndDisplay(new RespositoryParser()
 				.getobjectLocator("HomeLoan.MortgageRate.CompareButton"))){
 			System.out.println("****************Compare Button is  visible***************");
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
@@ -72,7 +73,8 @@ public class HomeLoanMortgageRates {
 			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>Element Is clicked Successfully");
 			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
-		}else{
+			}			
+		}catch(Exception e){
 			System.out.println("****************Compare Button is not visible***************");
 		}
 		return null;
