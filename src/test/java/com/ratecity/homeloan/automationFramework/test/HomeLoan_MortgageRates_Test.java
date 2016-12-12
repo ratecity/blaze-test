@@ -18,7 +18,7 @@ import bsh.util.Util;
 
 public class HomeLoan_MortgageRates_Test extends BaseClass {
 
-	@Test(priority=3,alwaysRun=true)
+	//@Test(priority=3,alwaysRun=true)
 	public void Test_ToVerifyClearButtonFunctionality() throws Exception{
 		System.out.println("*************MR_ToVerifyClearButtonFunctionalit****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyClearButtonFunctionality");
@@ -46,7 +46,8 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		if(HomeLoanComparisonpage.fn_VerifyHomeLoanText()){
 			if(HomeLoanComparisonpage.fn_VerifyComparisontable()==3){
 				BaseClass.logger.log(LogStatus.PASS, "INTO METHOD==> CompareFunctionality :  Working Successfully!! :)");
-				Assert.assertTrue(true); 
+				//Assert.assertTrue(true);
+				Assert.assertTrue(false);
 			}
 			else{
 				BaseClass.logger.log(LogStatus.FAIL, "INTO METHOD==> CompareFunctionality :  Not working Successfully!! (: ");
@@ -71,7 +72,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=2,alwaysRun=true)
+	//@Test(priority=2,alwaysRun=true)
 	public void Test_toVerifyCompareWithBig4Button() throws Exception{
 		System.out.println("*************MR_VerifyCompareWithBig4Button****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyCompareWithBig4Button");
