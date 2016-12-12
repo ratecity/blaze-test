@@ -49,12 +49,14 @@ public class Utility {
 		if (!file.exists()) {
             if (file.mkdir()) {
             	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
+            	System.out.println("FormMKDIR<><<<<<<<<<<><><><><>>>>>>>>>>>>>>>>>>>>>>>: ScreenShotPath :"+ dest);
             } else {
                BaseClass.logger.log(LogStatus.ERROR, "INTO Method ==> Failed to create directory in specified position");
             }
 		} 
             else{
-            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";	
+            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
+            	System.out.println("<><<<<<<<<<<><><><><>>>>>>>>>>>>>>>>>>>>>>>: ScreenShotPath :"+ dest);
             }
 		File oDest = new File(dest);
 		try {
