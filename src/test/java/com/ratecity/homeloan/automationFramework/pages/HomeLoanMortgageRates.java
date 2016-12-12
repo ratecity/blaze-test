@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
@@ -57,10 +59,11 @@ public class HomeLoanMortgageRates {
 		return flag;
 	}
 	public static HomeLoanComparisonpage fn_ClickOnCompareButton() throws Exception{
-		
+		WebDriverWait wait =  new WebDriverWait(BaseClass.getDriver(),5);
+		By Comparebutton = new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate.CompareButton");
+		wait.until(ExpectedConditions.elementToBeClickable(BaseClass.getDriver().findElement(Comparebutton)));
 		try{
-			if(Utility.isElementPresentAndDisplay(new RespositoryParser()
-				.getobjectLocator("HomeLoan.MortgageRate.CompareButton"))){
+			if(Utility.isElementPresentAndDisplay(Comparebutton)){
 			System.out.println("****************Compare Button is  visible***************");
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
 			element =  BaseClass.getDriver().findElement(new RespositoryParser()
