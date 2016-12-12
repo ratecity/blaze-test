@@ -45,16 +45,16 @@ public class Utility {
 		BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> CaptureScreenShot and Return path");
 		TakesScreenshot oScn = (TakesScreenshot)driver;
 		File oScnShot = oScn.getScreenshotAs(OutputType.FILE);
-		File file = new File(System.getProperty("user.dir")+File.separator+"Reports");
+		File file = new File(System.getProperty("user.dir")+File.separator+"ScreenShots");
 		if (!file.exists()) {
             if (file.mkdir()) {
-            	dest = System.getProperty("user.dir")+File.separator+"Reports"+File.separator+screenshotName+".jpeg";
+            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
             } else {
                BaseClass.logger.log(LogStatus.ERROR, "INTO Method ==> Failed to create directory in specified position");
             }
 		} 
             else{
-            	dest = System.getProperty("user.dir")+File.separator+"Reports"+File.separator+screenshotName+".jpeg";
+            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
             }
 		File oDest = new File(dest);
 		try {

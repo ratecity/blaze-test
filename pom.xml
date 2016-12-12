@@ -79,6 +79,18 @@
 
 							<from>testRateCity@gmail.com</from>
 							<subject>Test Automation Report</subject>
+							 <htmlMessage>
+                           <![CDATA[
+                             <p>
+                                 We have new Automation test results for:
+                                    build: ${project.groupId}:${project.artifactId}:${project.version}
+                                    rev: ${build.vcs.number}
+
+                                 See attached failsafe report.
+                             </p>
+                             <br>
+                           ]]>
+                        </htmlMessage>
 							<failonerror>true</failonerror>
 							<mailhost>smtp.gmail.com</mailhost>
 							<mailport>465</mailport>
