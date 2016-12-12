@@ -109,6 +109,7 @@ public class BaseClass {
 		  {
 			  //logger.log(LogStatus.FAIL, result.getThrowable());
 			String screenshot_path = Utility.CaptureScreen(BaseClass.getDriver(), result.getName());
+			System.out.println("ScfreenShotPath>>>>>>>>>>>>>>>>>>>>>>>> : "+screenshot_path);
 			String image  = logger.addScreenCapture(screenshot_path);
 			logger.log(LogStatus.FAIL,"Snapshot below: " ,image);
 			 System.out.println("*******"+ result.getMethod().getMethodName()+" -: FAIL");
