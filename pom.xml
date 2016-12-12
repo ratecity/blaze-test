@@ -98,6 +98,10 @@
 									<includes>
 										<include>**/*.html</include>
 									</includes>
+									<directory>${basedir}/ScreenShots</directory>
+									<includes>
+										<include>**/*.jpeg</include>
+									</includes>
 									<!-- Use Regular Expressions like **/*.html if you want all the 
 										html files to send -->
 								</fileSet>
