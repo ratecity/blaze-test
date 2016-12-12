@@ -215,12 +215,9 @@ public class Utility {
 	 */
 	public  static boolean isElementPresentAndDisplay( By by) {
 		boolean flag=false;
-		System.out.println("<<<<<<<<>>>>>>>>>>>>>>>>>>:==From Is ElementPresent& Display");
 		try {
-			System.out.println(">>>>>>>>>>>>>>>>>>@@@@@@@@@@@@@@@@@ : Text : "+BaseClass.getDriver().findElement(by).getText());
 			if(BaseClass.getDriver().findElement(by).isDisplayed()){
 				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
-				System.out.println("<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>IsE:P:D=Try");
 				return flag;	
 			}
 			
