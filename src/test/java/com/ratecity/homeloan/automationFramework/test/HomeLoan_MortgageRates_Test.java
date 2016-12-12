@@ -10,6 +10,8 @@ import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
+import bsh.util.Util;
+
 
 
 
@@ -39,6 +41,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(3000);
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(2);
+		Utility.GoToSleep(1500);
 		HomeLoanMortgageRates.fn_ClickOnCompareButton();
 		if(HomeLoanComparisonpage.fn_VerifyHomeLoanText()){
 			if(HomeLoanComparisonpage.fn_VerifyComparisontable()==3){
@@ -75,6 +78,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(2000);
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(1);
+		Utility.GoToSleep(1500);
 		HomeLoanMortgageRates.fn_ClickOnComparewithBig4Button();
 		if(HomeLoanComparisonpage.fn_VerifyHomeLoanText()){
 			if(HomeLoanComparisonpage.fn_VerifyComparisontable()==6){
