@@ -37,6 +37,7 @@ public class HomeLoanMortgageRates {
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
 			Utility.selectcheckbox(we.get(i));
+			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<Selected>>>>>> : "+ i);
 			//  we.get(i).click();
 			Utility.GoToSleep(2000);
 		}
@@ -68,6 +69,7 @@ public class HomeLoanMortgageRates {
 			Utility.scrollToElement(element);
 			Utility.GoToSleep(1000);
 			element.click();
+			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>Element Is clicked Successfully");
 			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
 		}else{
