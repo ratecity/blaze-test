@@ -217,6 +217,7 @@ public class Utility {
 		boolean flag=false;
 		System.out.println("<<<<<<<<>>>>>>>>>>>>>>>>>>:==From Is ElementPresent& Display");
 		try {
+			System.out.println(">>>>>>>>>>>>>>>>>>@@@@@@@@@@@@@@@@@ : Text : "+BaseClass.getDriver().findElement(by).getText());
 			if(BaseClass.getDriver().findElement(by).isDisplayed()){
 				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
 				System.out.println("<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>IsE:P:D=Try");
@@ -231,6 +232,13 @@ public class Utility {
 			 return flag=true;
 			}
 			
+		}catch(ElementNotVisibleException e){
+			GoToSleep(3000);
+			System.out.println("*********************Going for sleep");
+			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Going for sleep & wait sometime for the element to be displayed");
+			if(BaseClass.getDriver().findElement(by).isDisplayed()){
+			 return flag=true;
+			}
 		}
 		//BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element not found after given time");
 		return false;
