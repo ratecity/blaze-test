@@ -10,16 +10,14 @@ import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
-import bsh.util.Util;
-
 
 
 
 
 public class HomeLoan_MortgageRates_Test extends BaseClass {
 
-	//@Test(priority=3,alwaysRun=true)
-	public void Test_ToVerifyClearButtonFunctionality() throws Exception{
+	@Test(priority=3,alwaysRun=true)
+	public void MortgageRatesTest01_ToVerifyClearButtonFunctionality() throws Exception{
 		System.out.println("*************MR_ToVerifyClearButtonFunctionalit****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyClearButtonFunctionality");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -35,7 +33,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 	@Test(priority=1,alwaysRun=true)
-	public void Test_toVerifyComparefunctionalityWith2Banks() throws Exception{
+	public void MortgageRatesTest02_toVerifyComparefunctionalityWith2Banks() throws Exception{
 		System.out.println("*************MR_VerifyComparefunctionalityWith2Banks****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyComparefunctionalityWith2Banks");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -57,8 +55,8 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 	
-	//@Test(priority=3,alwaysRun=true)
-	public void Test_toVerifyRateTableHas20Records()throws Exception{
+	@Test(priority=3,alwaysRun=true)
+	public void MortgageRatesTest03_toVerifyRateTableHas20Records()throws Exception{
 		System.out.println("*************MR_VerifyRateTableHas20Records****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyRateTableHas20Records");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -72,8 +70,8 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		}
 	}
 
-	//@Test(priority=2,alwaysRun=true)
-	public void Test_toVerifyCompareWithBig4Button() throws Exception{
+	@Test(priority=2,alwaysRun=true)
+	public void MortgageRatesTest04_toVerifyCompareWithBig4Button() throws Exception{
 		System.out.println("*************MR_VerifyCompareWithBig4Button****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyCompareWithBig4Button");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -93,8 +91,8 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 
 		}
 	}
-	//@Test(priority=5,alwaysRun=true)
-	public void Test_toVerifyHomeLoanMortgagepage_SearchListing() throws Exception{
+	@Test(priority=5,alwaysRun=true)
+	public void MortgageRatesTest06_toVerifyHomeLoanMortgagepage_SearchListing() throws Exception{
 		System.out.println("*************MR_VerifyHomeLoanMortgagepage_SearchListing****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyHomeLoanMortgagepage_SearchListing");
 		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
@@ -120,12 +118,12 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 				}
 			}
 			else{
-				BaseClass.logger.log(LogStatus.FATAL, "Expected Value is not getting displayed!!!");
+				BaseClass.logger.log(LogStatus.INFO, "Expected Value is not getting displayed!!!");
 				Assert.assertTrue(false);
 
 			}
 		}else{
-			BaseClass.logger.log(LogStatus.FATAL, "RateTable,ToolTips& Articles are not getting displayed!!!");  
+			BaseClass.logger.log(LogStatus.FAIL, "RateTable,ToolTips& Articles are not getting displayed!!!");  
 			Assert.assertTrue(false);
 		}
 	}

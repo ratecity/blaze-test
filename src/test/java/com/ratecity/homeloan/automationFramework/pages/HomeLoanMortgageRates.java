@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
@@ -33,11 +32,9 @@ public class HomeLoanMortgageRates {
 	    Utility.GoToSleep(2000);
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.MortgageRate"));
-		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>> : "+we.size());
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
 			Utility.selectcheckbox(we.get(i));
-			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<Selected>>>>>> : "+ i);
 			//  we.get(i).click();
 			Utility.GoToSleep(2000);
 		}
