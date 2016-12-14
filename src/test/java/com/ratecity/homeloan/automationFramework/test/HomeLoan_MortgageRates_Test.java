@@ -45,7 +45,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 			if(HomeLoanComparisonpage.fn_VerifyComparisontable()==3){
 				BaseClass.logger.log(LogStatus.PASS, "INTO METHOD==> CompareFunctionality :  Working Successfully!! :)");
 				//Assert.assertTrue(true);
-				Assert.assertTrue(false);
+				Assert.assertTrue(true);
 			}
 			else{
 				BaseClass.logger.log(LogStatus.FAIL, "INTO METHOD==> CompareFunctionality :  Not working Successfully!! (: ");
