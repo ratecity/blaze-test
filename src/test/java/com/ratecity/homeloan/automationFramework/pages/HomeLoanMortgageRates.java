@@ -220,15 +220,12 @@ public class HomeLoanMortgageRates {
 		boolean flag = false;
        List<WebElement> Ad_RateText = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.MortgageRate.AdvertisedRateText"));
-     /*  for (WebElement webElement : Ad_RateText) {
-		System.out.println("Value is : " + webElement.getText());
-	}*/
        for (WebElement webElement : Ad_RateText) {
     	   Utility.GoToSleep(3000);
 		if(!webElement.getText().equalsIgnoreCase(textToBeFound)){
 			if(webElement.getText().contains("Intro")){
 				flag=false;
-				break;
+				continue;
 			}
 			Utility.scrollToElement(webElement);
 			Utility.highlightElementBorder(webElement);
@@ -251,7 +248,7 @@ public class HomeLoanMortgageRates {
 			ele = BaseClass.getDriver().findElement(new RespositoryParser().
 					getobjectLocator("HomeLoan.MortgageRate.InterestRate_VariableChkBox"));
 			Utility.selectcheckbox(ele);
-			Utility.GoToSleep(2000);
+			Utility.GoToSleep(3000);
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_ClickOnInterestRateChkBox : Successfully Clicked on Variable CheckBox!!");
  		 }else if(chkboxtype.equalsIgnoreCase("Fixed - 1 year")){
  			ele = BaseClass.getDriver().findElement(new RespositoryParser().

@@ -106,6 +106,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 			if(Utility.fn_CompareTwocollectionvalues(prev_value, updated_value)){
 				BaseClass.logger.log(LogStatus.INFO, "Updated value is greater then prev value!!!");
 				HomeLoanMortgageRates.fn_ClickOnPagination("100");
+				Utility.GoToSleep(1000);
 				//   HomeLoanMortgageRates.fn_Verfiy_AdvertisedRateText("Variable");
 				HomeLoanMortgageRates.fn_ClickOnInterestRateChkBox("Variable");
 				if(HomeLoanMortgageRates.fn_Verfiy_AdvertisedRateText("Variable")){
