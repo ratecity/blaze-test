@@ -83,7 +83,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		
 		logger=report.startTest("HomeLoanLandingPage_VerifyHomeLoantoolsAreworking");
 		if(HomeLoanLandingpage.fn_HomeLoanTools()){
-			Assert.assertTrue(false);
+			Assert.assertTrue(true);
 			BaseClass.logger.log(LogStatus.PASS,"All Tools are  working");
 		}else{
 			Assert.assertTrue(false,"Links are not working");

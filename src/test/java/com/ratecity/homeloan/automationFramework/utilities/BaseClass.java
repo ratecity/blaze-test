@@ -2,13 +2,10 @@ package com.ratecity.homeloan.automationFramework.utilities;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -24,7 +21,7 @@ public class BaseClass {
 	public static RespositoryParser parser;
 	public  static ExtentReports report;
 	public  static ExtentTest logger;
-	private String timeStamp=null;
+//	private String timeStamp=null;
 
 	public static WebDriver getDriver() {
 		return driver;
@@ -58,7 +55,7 @@ public class BaseClass {
 
 	@BeforeSuite
 	public void testReport(){  
-		timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		//timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		File file = new File(System.getProperty("user.dir")+File.separator+"Reports");
 		if (!file.exists()) {
 			if (file.mkdir()) {
@@ -106,7 +103,6 @@ public class BaseClass {
 		{
 			String screenshot_path = Utility.CaptureScreen(BaseClass.getDriver(), result.getName());
 			String image  = logger.addScreenCapture(screenshot_path);
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@ScreenShots Path : - "+ screenshot_path);
 			logger.log(LogStatus.FAIL,"Snapshot below: " ,image);
 			System.out.println("*******"+ result.getMethod().getMethodName()+" -: FAIL");
 			driver.quit();
