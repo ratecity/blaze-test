@@ -57,16 +57,14 @@ public class HomeLoanMortgageRates {
 		
 		if(Utility.isElementPresentAndDisplay(new RespositoryParser()
 				.getobjectLocator("HomeLoan.MortgageRate.CompareButton"))){
-			System.out.println("****************Compare Button is  visible***************");
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
 			element =  BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareButton"));
-			JavascriptExecutor jse = (JavascriptExecutor)BaseClass.getDriver();
-			jse.executeScript("arguments[0].scrollIntoView()", element); 
+			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
+			((JavascriptExecutor) BaseClass.getDriver()).executeScript(js, element);
 			Utility.scrollToElement(element);
 			Utility.GoToSleep(1000);
 			element.click();
-			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>Element Is clicked Successfully");
 			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
 		}else{
@@ -82,7 +80,6 @@ public class HomeLoanMortgageRates {
 	public static HomeLoanComparisonpage fn_ClickOnComparewithBig4Button() throws Exception{
 		if(Utility.isElementPresentAndDisplay(new RespositoryParser()
 				.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"))){
-			System.out.println("****************Compare Big 4 Button is  visible***************");
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : CompareWithBig4Button button is visible");
 			element = BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));

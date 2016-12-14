@@ -9,6 +9,7 @@ import com.ratecity.homeloan.automationFramework.pages.HomeLoanComparisonpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanLandingpage;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
+import com.ratecity.homeloan.automationFramework.utilities.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
 
@@ -126,6 +127,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 	public void HomeLoanTest08_ToVerifyAdsRecordsArticles() throws IOException{
 		System.out.println("*************ToVerifyAdsRecordsArticles****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyAdsRecordsArticles");
+		Utility.GoToSleep(2000);
 		if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")||HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Middle")|| HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
 
 			if(HomeLoanLandingpage.fn_CheckIfRateTableHas6Records("HomeLoan.RateRecordsContainer","HomeLoan.RateRecords")){
