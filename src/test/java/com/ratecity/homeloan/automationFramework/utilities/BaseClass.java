@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -88,7 +89,7 @@ public class BaseClass {
 	@BeforeMethod
 	public void fn_Launchbrowser() throws IOException{
 		System.setProperty(Utility.fn_ReaddataFronPropFile("chromeDriver"), Utility.fn_ReaddataFronPropFile("chromeDriverpath"));
-		driver  = new ChromeDriver();
+		driver  = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(Integer.parseInt(Utility.fn_ReaddataFronPropFile("implicit_wait")), TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
