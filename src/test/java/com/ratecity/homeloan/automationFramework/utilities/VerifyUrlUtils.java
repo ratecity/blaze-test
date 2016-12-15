@@ -18,7 +18,9 @@ public class VerifyUrlUtils {
 		{
 			put("Fixed rate home loans",    "Fixed Rate Home Loan Rates from");
 			put("Variable rate home loans", "Variable rate home loans");
-			put("Low interest home loans", "Low interest home loans"); 
+			put("Variable Rate Mortgage","Variable rate home loans");
+			put("Investment Property","Investment Property");
+			put("Low Interest Home Loans", "Low interest home loans"); 
 			put("No deposit home loans", "No Deposit Home Loan Rates"); 
 			put("Construction loans", "Construction loans"); 
 			put("Owner builder loans", "Owner builder"); 
@@ -28,7 +30,7 @@ public class VerifyUrlUtils {
 			put("Best Mortgage", "Best Mortgages"); 
 			put("Home Loan Ratings", " Home Loan Rates"); 
 			put("First Mortgage", "First home loan rates"); 
-			put("Compare Home Loans", "Compare home loan"); 
+			put("Compare Home Loans", "Home Loan Comparison"); 
 			put("Mortgage Rates", "mortgage rates from"); 
 			put("1 year Fixed", "1 year fixed mortgages rates"); 
 			put("3 year Fixed", "3 year fixed mortgages rates"); 
@@ -37,9 +39,14 @@ public class VerifyUrlUtils {
 			put("3 Year Fxd Investment Property", "3 year fixed investment mortgages"); 
 			put("Home Equity", "Compare home equity rates"); 
 			put("Deals", "Compare home loan deals"); 
+			put("Stamp Duty Calculator","Calculator");
 			put("Product Comparison", "Compare home loan product"); 
 			put("Banks variable rate mortgages", "Compare bank variable home loans"); 
 			put("Search", "Compare 3000+ home loans"); 
+			put("Fixed Rate Mortgage","Fixed Rate Home Loan");
+			put("No Doc Home Loans","No Doc Home Loans");
+			put("All Popular Searches","Compare Home Loan");
+			put("Popular Home Loans Searches","Compare Home Loan");
 		}};
 
 		static final Map<String , String> ArticlesLinks = new HashMap<String , String>() {/**
