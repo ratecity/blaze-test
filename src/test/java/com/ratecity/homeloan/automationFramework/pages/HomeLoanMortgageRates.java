@@ -172,7 +172,7 @@ public class HomeLoanMortgageRates {
 					findElement(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate.BorrowingSlider"));
 			/*WebElement updatedBorrowingAmt = BaseClass.getDriver().
 					findElement(new RespositoryParser().getobjectLocator("HomeLoan.MortgageRate.BorrowingAmount"));*/
-			Utility.dragAnddropBy(borrowingAmt, 30);
+			Utility.dragAnddropBy(borrowingAmt, 40);
 			Utility.GoToSleep(5000);
 		}
 

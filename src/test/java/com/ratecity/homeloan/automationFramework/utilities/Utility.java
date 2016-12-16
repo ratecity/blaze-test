@@ -307,7 +307,7 @@ public class Utility {
 		try{
 			BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> dragAnddropBy");
 			 Actions move = new Actions(BaseClass.getDriver());
-			 move.dragAndDropBy(webelement, movetoValue, 0).click();
+			 move.dragAndDropBy(webelement, movetoValue, 0);
 			 move.build().perform();
 			 Utility.GoToSleep(2000);
 			 BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> dragAnddropBy : Scroll Moved Successfully!!!!");
