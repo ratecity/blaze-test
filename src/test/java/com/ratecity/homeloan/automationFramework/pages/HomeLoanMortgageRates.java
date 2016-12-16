@@ -158,9 +158,15 @@ public class HomeLoanMortgageRates {
 
 	}
 
-	public static String fn_MonthlyRepayment() throws IOException{
+	public static String fn_MonthlyRepaymentBeforeUpdate() throws IOException{
 		List<WebElement> list  = BaseClass.getDriver().findElements(By.cssSelector("td[class*='monthlyRepayment']"));
 		return list.get(0).getText();
+
+	}
+	
+	public static String fn_MonthlyRepaymentAfterUpdate() throws IOException{
+		List<WebElement> list1  = BaseClass.getDriver().findElements(By.cssSelector("td[class*='monthlyRepayment']"));
+		return list1.get(0).getText();
 
 	}
 

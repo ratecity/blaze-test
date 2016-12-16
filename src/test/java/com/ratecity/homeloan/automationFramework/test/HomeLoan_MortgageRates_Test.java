@@ -1,5 +1,6 @@
 package com.ratecity.homeloan.automationFramework.test;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -100,12 +101,12 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 		if(HomeLoanMortgageRates.fn_hasRateTable()&&
 				HomeLoanMortgageRates.fn_hasToolTip() && 
 				HomeLoanMortgageRates.fn_hasArticles()){
-			String prev_value=HomeLoanMortgageRates.fn_MonthlyRepayment();
+			String prev_value=HomeLoanMortgageRates.fn_MonthlyRepaymentBeforeUpdate();
 			System.out.println("Main Method>>>>>>>>>>>>>>>>>: " + prev_value);
 			Utility.GoToSleep(3000);
 			HomeLoanMortgageRates.fn_ChangeBorrowingAmount();
-			Utility.GoToSleep(3000);
-			String updated_value=HomeLoanMortgageRates.fn_MonthlyRepayment(); 
+			//WebDriverWait wait = new WebDriverWait(BaseClass.getDriver(),5);
+			String updated_value=HomeLoanMortgageRates.fn_MonthlyRepaymentAfterUpdate();
 			System.out.println("Main Method>>>>>>>>>>>>>>>>>: " + updated_value);
 			if(Utility.fn_CompareTwocollectionvalues(prev_value, updated_value)){
 				BaseClass.logger.log(LogStatus.INFO, "Updated value is greater then prev value!!!");
