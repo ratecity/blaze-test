@@ -6,7 +6,7 @@ script:
 sudo: required
 dist: trusty
 addons:
- firefox: "47.0.1"
+ firefox: "45.6.0"
   
 before_script:
 - export FIREFOX_SOURCE_URL=$(which  firefox)
