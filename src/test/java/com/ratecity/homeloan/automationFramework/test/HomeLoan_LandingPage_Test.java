@@ -128,7 +128,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		System.out.println("*************ToVerifyAdsRecordsArticles****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyAdsRecordsArticles");
 		Utility.GoToSleep(2000);
-		if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")||HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Middle")|| HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
+		if(HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_top")|| HomeLoanLandingpage.fn_CheckIfAds("HomeLoan.Ads_Bottom")){
 
 			if(HomeLoanLandingpage.fn_CheckIfRateTableHas6Records("HomeLoan.RateRecordsContainer","HomeLoan.RateRecords")){
 				if(HomeLoanLandingpage.fn_CheckIfhasArticles("HomeLoan.articles")){
