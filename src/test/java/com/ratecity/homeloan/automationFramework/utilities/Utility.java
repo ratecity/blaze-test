@@ -124,7 +124,7 @@ public class Utility {
 			System.out.println("************* : "+ Integer.parseInt(fn_ModifyString(updated_value)));
 			flag=true;
 		}else{
-			updated_value=HomeLoanMortgageRates.fn_MonthlyRepayment(); 
+			updated_value=HomeLoanMortgageRates.fn_MonthlyRepaymentAfterUpdate(); 
 			System.out.println("ELSE Block : Previous Value :"+ prev_value+" =  Updated value : "+updated_value);
 			if(Integer.parseInt(fn_ModifyString(prev_value))
 					< Integer.parseInt(fn_ModifyString(updated_value))){
