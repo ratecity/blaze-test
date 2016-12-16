@@ -24,6 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.relevantcodes.extentreports.LogStatus;
 
 
@@ -112,8 +113,9 @@ public class Utility {
 	 * @param prev_value
 	 * @param updated_value
 	 * @return
+	 * @throws IOException 
 	 */
-	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ){
+	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ) throws IOException{
 		boolean flag  = false;
 		System.out.println("Previous Value :"+ prev_value+" =  Updated value : "+updated_value);
 		if(Integer.parseInt(fn_ModifyString(prev_value))
@@ -121,7 +123,16 @@ public class Utility {
 			System.out.println("############# : "+Integer.parseInt(fn_ModifyString(prev_value)));
 			System.out.println("************* : "+ Integer.parseInt(fn_ModifyString(updated_value)));
 			flag=true;
-		}
+		}else{
+			updated_value=HomeLoanMortgageRates.fn_MonthlyRepayment(); 
+			System.out.println("ELSE Block : Previous Value :"+ prev_value+" =  Updated value : "+updated_value);
+			if(Integer.parseInt(fn_ModifyString(prev_value))
+					< Integer.parseInt(fn_ModifyString(updated_value))){
+                System.out.println("*****************Else Block**********************");				
+				System.out.println("############# : "+Integer.parseInt(fn_ModifyString(prev_value)));
+				System.out.println("************* : "+ Integer.parseInt(fn_ModifyString(updated_value)));
+				flag=true;
+		}}
 		return flag;
 	}
 	
