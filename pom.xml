@@ -72,7 +72,7 @@
 
 							<from>testRateCity@gmail.com</from>
 							<subject>Test Automation Report</subject>
-							 <htmlMessageFile>src/test/resources/MailContent.html</htmlMessageFile>
+							<htmlMessageFile>src/test/resources/MailContent.html</htmlMessageFile>
 							<failonerror>true</failonerror>
 							<mailhost>smtp.gmail.com</mailhost>
 							<mailport>465</mailport>

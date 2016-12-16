@@ -101,10 +101,12 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 				HomeLoanMortgageRates.fn_hasToolTip() && 
 				HomeLoanMortgageRates.fn_hasArticles()){
 			String prev_value=HomeLoanMortgageRates.fn_MonthlyRepayment();
-			Utility.GoToSleep(1500);
+			System.out.println("Main Method&&&&&&&&&&&&&&&&&&&&&: " + prev_value);
+			Utility.GoToSleep(3000);
 			HomeLoanMortgageRates.fn_ChangeBorrowingAmount();
-			Utility.GoToSleep(1500);
+			Utility.GoToSleep(3000);
 			String updated_value=HomeLoanMortgageRates.fn_MonthlyRepayment(); 
+			System.out.println("Main Method>>>>>>>>>>>>>>>>>: " + updated_value);
 			if(Utility.fn_CompareTwocollectionvalues(prev_value, updated_value)){
 				BaseClass.logger.log(LogStatus.INFO, "Updated value is greater then prev value!!!");
 				HomeLoanMortgageRates.fn_ClickOnPagination("100");
