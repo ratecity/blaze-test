@@ -41,6 +41,7 @@ public static void fn_ClickOnGetTheWidgetButton() throws Exception{
 }
 
 public static boolean fn_CheckEmbedWindowisDisplayed() throws Exception{
+	Utility.GoToSleep(1000);
 	By EmbedHeader = new RespositoryParser().getobjectLocator("HomeLoan.ComparisonPage.EmbedHeader");
 	By EmbedWindow = new RespositoryParser().getobjectLocator("HomeLoan.ComparisonPage.EmbedWindow");
 	WebElement embedHeader = BaseClass.getDriver().findElement(EmbedHeader);

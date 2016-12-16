@@ -115,7 +115,7 @@ public class Utility {
 	 */
 	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ){
 		boolean flag  = false;
-		
+		System.out.println("Previous Value :"+ prev_value+" =  Updated value : "+updated_value);
 		if(Integer.parseInt(fn_ModifyString(prev_value))
 				< Integer.parseInt(fn_ModifyString(updated_value))){
 			flag=true;

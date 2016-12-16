@@ -123,7 +123,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 		}
 	}
 
-	@Test(priority=8,alwaysRun=true)
+	//@Test(priority=8,alwaysRun=true)
 	public void HomeLoanTest08_ToVerifyAdsRecordsArticles() throws IOException{
 		System.out.println("*************ToVerifyAdsRecordsArticles****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyAdsRecordsArticles");
