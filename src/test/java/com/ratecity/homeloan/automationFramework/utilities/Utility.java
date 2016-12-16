@@ -118,6 +118,8 @@ public class Utility {
 		System.out.println("Previous Value :"+ prev_value+" =  Updated value : "+updated_value);
 		if(Integer.parseInt(fn_ModifyString(prev_value))
 				< Integer.parseInt(fn_ModifyString(updated_value))){
+			System.out.println("############# : "+Integer.parseInt(fn_ModifyString(prev_value)));
+			System.out.println("************* : "+ Integer.parseInt(fn_ModifyString(updated_value)));
 			flag=true;
 		}
 		return flag;
