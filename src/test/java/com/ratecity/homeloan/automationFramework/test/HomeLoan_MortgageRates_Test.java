@@ -119,7 +119,7 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 				}
 			}
 			else{
-				BaseClass.logger.log(LogStatus.INFO, "Expected Value is not getting displayed!!!");
+				BaseClass.logger.log(LogStatus.INFO, "New values are not greater then older value!!!");
 				Assert.assertTrue(false);
 
 			}
