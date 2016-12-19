@@ -7,8 +7,7 @@ nohup.out
 .metadata/
 .project
 .settings/
-target/
 test-output/
-Reports/
 ScreenShots/
-
+Reports/
+target/
