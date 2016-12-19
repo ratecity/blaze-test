@@ -17,26 +17,26 @@ public class VerifyUrlUtils {
 
 		{
 			put("Fixed rate home loans",    "Fixed Rate Home Loan Rates from");
-			put("Variable rate home loans", "Variable rate home loans");
-			put("Variable Rate Mortgage","Variable rate home loans");
+			put("Variable rate home loans", "Variable Rate Home Loanss");
+			put("Variable Rate Mortgage","Variable Rate Home Loans");
 			put("Investment Property","Investment Property");
-			put("Low Interest Home Loans", "Low interest home loans"); 
+			put("Low Interest Home Loans", "Low Interest Home Loans"); 
 			put("No deposit home loans", "No Deposit Home Loan Rates"); 
 			put("Construction loans", "Construction loans"); 
 			put("Owner builder loans", "Owner builder"); 
 			put("Under 4% club", "Under 4 club loans"); 
 			put("LOW DOC Home Loans", "Low Doc Home Loans"); 
 			put("Low Interest Mortgage", "Low Interest Home Loans"); 
-			put("Best Mortgage", "Best Mortgages"); 
-			put("Home Loan Ratings", " Home Loan Rates"); 
-			put("First Mortgage", "First home loan rates"); 
-			put("Compare Home Loans", "Home Loan Comparison"); 
-			put("Mortgage Rates", "mortgage rates from"); 
-			put("1 year Fixed", "1 year fixed mortgages rates"); 
-			put("3 year Fixed", "3 year fixed mortgages rates"); 
-			put("SMSF Loans", "Self managed super fund loans"); 
+			put("Best Mortgage", "Mortgages"); 
+			put("Home Loan Ratings", "Compare Home Loan Rates"); 
+			put("First Mortgage", "First Home Loans"); 
+			put("Compare Home Loans", "Compare home loan"); 
+			put("Mortgage Rates", "Mortgage Rates"); 
+			put("1 year Fixed", "1 Year Fixed Mortgage"); 
+			put("3 year Fixed", "3 Year Fixed Mortgage"); 
+			put("SMSF Loans", "Self Managed Super Loans"); 
 			put("1 Year Fxd Investment Property", "1 year fixed investment mortgages"); 
-			put("3 Year Fxd Investment Property", "3 year fixed investment mortgages"); 
+			put("3 Year Fxd Investment Property", "3 year fixed investment mortgages "); 
 			put("Home Equity", "Compare home equity rates"); 
 			put("Deals", "Compare home loan deals"); 
 			put("Stamp Duty Calculator","Calculator");
@@ -47,6 +47,7 @@ public class VerifyUrlUtils {
 			put("No Doc Home Loans","No Doc Home Loans");
 			put("All Popular Searches","Compare Home Loan");
 			put("Popular Home Loans Searches","Compare Home Loan");
+			put("Best Home Loan Rates","Best Home Loan Rates");
 		}};
 
 		static final Map<String , String> ArticlesLinks = new HashMap<String , String>() {/**
@@ -106,7 +107,7 @@ public class VerifyUrlUtils {
 				}
 				public static boolean fn_VerifyTitle_ArticlesLinks(String urlText){
 
-					if(BaseClass.getDriver().getTitle().contains(ArticlesLinks.get(urlText))){
+					if(BaseClass.getDriver().getTitle().contains((ArticlesLinks.get(urlText)))){
 						Utility.GoToSleep(1000);
 						Utility.goBack();
 						BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>fn_VerifyTitle_ArticlesLinks : "+urlText +" Page Loaded Succesfully!!");
