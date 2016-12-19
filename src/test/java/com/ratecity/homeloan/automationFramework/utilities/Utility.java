@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
@@ -23,7 +24,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
+import com.google.common.base.Function;
+import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.relevantcodes.extentreports.LogStatus;
 
 
@@ -42,18 +47,18 @@ public class Utility {
 	
 		String dest=null;
 		BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> CaptureScreenShot and Return path");
-		TakesScreenshot oScn = (TakesScreenshot) BaseClass.getDriver();
+		TakesScreenshot oScn = (TakesScreenshot)driver;
 		File oScnShot = oScn.getScreenshotAs(OutputType.FILE);
-		File file = new File(System.getProperty("user.dir")+File.separator+"ScreenShots");
+		File file = new File(System.getProperty("user.dir")+File.separator+"Reports");
 		if (!file.exists()) {
             if (file.mkdir()) {
-            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";
+            	dest = System.getProperty("user.dir")+File.separator+"Reports"+File.separator+screenshotName+".jpeg";
             } else {
                BaseClass.logger.log(LogStatus.ERROR, "INTO Method ==> Failed to create directory in specified position");
             }
 		} 
             else{
-            	dest = System.getProperty("user.dir")+File.separator+"ScreenShots"+File.separator+screenshotName+".jpeg";	
+            	dest = System.getProperty("user.dir")+File.separator+"Reports"+File.separator+screenshotName+".jpeg";
             }
 		File oDest = new File(dest);
 		try {
@@ -112,14 +117,19 @@ public class Utility {
 	 * @param prev_value
 	 * @param updated_value
 	 * @return
+	 * @throws IOException 
 	 */
-	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ){
+	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ) throws IOException{
 		boolean flag  = false;
-		
 		if(Integer.parseInt(fn_ModifyString(prev_value))
-				< Integer.parseInt(fn_ModifyString(updated_value))){
+				<= Integer.parseInt(fn_ModifyString(updated_value))){
 			flag=true;
-		}
+		}else{
+			updated_value=HomeLoanMortgageRates.fn_MonthlyRepaymentAfterUpdate(); 
+			if(Integer.parseInt(fn_ModifyString(prev_value))
+					< Integer.parseInt(fn_ModifyString(updated_value))){
+				flag=true;
+		}}
 		return flag;
 	}
 	
@@ -215,15 +225,28 @@ public class Utility {
 	public  static boolean isElementPresentAndDisplay( By by) {
 		boolean flag=false;
 		try {
-			BaseClass.getDriver().findElement(by).isDisplayed();
-			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
-			return flag;
+			if(BaseClass.getDriver().findElement(by).isDisplayed()){
+				BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element Is found & displayed");flag=true;
+				return flag;	
+			}
+			
 		} catch (NoSuchElementException e) {
-			GoToSleep(2000);
+			GoToSleep(3000);
+			System.out.println("*********************Going for sleep");
 			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Going for sleep & wait sometime for the element to be displayed");
-			BaseClass.getDriver().findElement(by).isDisplayed();
+			if(BaseClass.getDriver().findElement(by).isDisplayed()){
+			 return flag=true;
+			}
+			
+		}catch(ElementNotVisibleException e){
+			GoToSleep(3000);
+			System.out.println("*********************Going for sleep");
+			BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Going for sleep & wait sometime for the element to be displayed");
+			if(BaseClass.getDriver().findElement(by).isDisplayed()){
+			 return flag=true;
+			}
 		}
-		BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element not found after given time");
+		//BaseClass.logger.log(LogStatus.INFO, "INTO METHOD==>isElementPresentAndDisplay : Element not found after given time");
 		return false;
 	}
 
@@ -246,10 +269,12 @@ public class Utility {
 	 * @throws IOException
 	 */
 	public static void selectcheckbox(String locator) throws IOException {
+		By by=new RespositoryParser().getobjectLocator(locator);
 		try {
-			if (!BaseClass.getDriver().findElement(new RespositoryParser().getobjectLocator(locator))
-					.isSelected()) {
+			if (!BaseClass.getDriver().findElement(by).isSelected()) {
+				System.out.println(">>>>>>>>>>>>>>>ElementIsNotSelected<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 				BaseClass.getDriver().findElement(new RespositoryParser().getobjectLocator(locator)).click();
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is selected now*****");
 			} else {
 				BaseClass.logger.log(LogStatus.INFO,"*****Checkbox is already selected*****");
@@ -292,7 +317,7 @@ public class Utility {
 		try{
 			BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> dragAnddropBy");
 			 Actions move = new Actions(BaseClass.getDriver());
-			 move.dragAndDropBy(webelement, movetoValue, 0).click();
+			 move.dragAndDropBy(webelement, movetoValue, 0);
 			 move.build().perform();
 			 Utility.GoToSleep(2000);
 			 BaseClass.logger.log(LogStatus.INFO,"INTO Method ==> dragAnddropBy : Scroll Moved Successfully!!!!");
@@ -309,7 +334,8 @@ public class Utility {
 	public static void selectcheckbox(WebElement we) {
 		try {
 			if (we.isDisplayed() && !we.isSelected()) {
-				we.click();
+				Actions action = new Actions(BaseClass.getDriver());
+				action.moveToElement(we).click().perform();
 				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Checkbox is selected");
 			} else {
 				BaseClass.logger.log(LogStatus.INFO,"INTO METHOD ==>selectcheckbox -- Checkbox is already selected");
@@ -427,5 +453,26 @@ public class Utility {
 		if(!ImagePresent)return false;
 		else return true;
 	}
+	
+	/**
+	 * 
+	 * @param locator
+	 * @return
+	 */
+	public static WebElement fluentWait(final By locator){
+	    Wait<WebDriver> wait = new FluentWait<WebDriver>(BaseClass.getDriver())
+	        .withTimeout(30, TimeUnit.SECONDS)
+	        .pollingEvery(5, TimeUnit.SECONDS)
+	        .ignoring(NoSuchElementException.class);
+
+	    WebElement element = wait.until(
+	        new Function<WebDriver, WebElement>() {
+	            public WebElement apply(WebDriver driver) {
+	                return driver.findElement(locator);
+	            }
+	        }
+	    );
+	    return element;
+	};
 }
 
