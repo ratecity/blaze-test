@@ -19,7 +19,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class HomeLoan_LandingPage_Test extends BaseClass {
 
 
-/*
+
 	@Test(priority=1,alwaysRun=true)
 	public void HomeLoanTest01_ToVerifyTopLinksAreWorking() throws Exception{
 		System.out.println("*************From ToVerifyTopLinksAreWorking****************_");
@@ -251,5 +251,5 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			Assert.assertTrue(false);
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
-	}*/
+	}
 }
