@@ -56,7 +56,7 @@ public class VerifyUrlUtils {
 
 			{
 				put("mortgage calculator","Home Loan Calculator");
-				put("SMSF loans", "Self managed super fund loans");
+				put("SMSF loans", "Self Managed Super Loans");
 				put("equity loans", "home equity rates"); 
 				put("applying for your first home loan", "Are you buying your first home?"); 
 				put("Read the Home Loans Guide", "Home Loans Guide"); 
