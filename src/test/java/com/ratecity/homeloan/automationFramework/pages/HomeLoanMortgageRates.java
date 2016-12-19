@@ -224,11 +224,12 @@ public class HomeLoanMortgageRates {
        List<WebElement> Ad_RateText = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.MortgageRate.AdvertisedRateText"));
        for (WebElement webElement : Ad_RateText) {
+    	   System.out.println("^^^^^^^^^^^^^^^^"+webElement);
     	   Utility.GoToSleep(3000);
 		if(!webElement.getText().equalsIgnoreCase(textToBeFound)){
 			if(webElement.getText().contains("Intro")){
 				flag=false;
-				continue;
+				//continue;
 			}
 			Utility.scrollToElement(webElement);
 			Utility.highlightElementBorder(webElement);
