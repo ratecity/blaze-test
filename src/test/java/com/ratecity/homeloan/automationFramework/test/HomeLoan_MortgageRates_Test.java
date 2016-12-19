@@ -36,7 +36,6 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 	public void MortgageRatesTest02_toVerifyComparefunctionalityWith2Banks() throws Exception{
 		System.out.println("*************MR_VerifyComparefunctionalityWith2Banks****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyComparefunctionalityWith2Banks");
-	//	BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(3000);
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(2);
 		Utility.GoToSleep(1500);
@@ -74,7 +73,6 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 	public void MortgageRatesTest04_toVerifyCompareWithBig4Button() throws Exception{
 		System.out.println("*************MR_VerifyCompareWithBig4Button****************");
 		logger = report.startTest("HomeLoan_MortgageRates_VerifyCompareWithBig4Button");
-	//    BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
 		Utility.GoToSleep(2000);
 		HomeLoanMortgageRates.fn_ClickOnCompareCheckbox(1);
 		Utility.GoToSleep(1500);
@@ -91,44 +89,5 @@ public class HomeLoan_MortgageRates_Test extends BaseClass {
 
 		}
 	}
-	//@Test(priority=5,alwaysRun=true)
-	public void MortgageRatesTest06_toVerifyHomeLoanMortgagepage_SearchListing() throws Exception{
-		System.out.println("*************MR_VerifyHomeLoanMortgagepage_SearchListing****************");
-		logger = report.startTest("HomeLoan_MortgageRates_VerifyHomeLoanMortgagepage_SearchListing");
-		BaseClass.getDriver().navigate().to("http://www.ratecity.com.au/home-loans/mortgage-rates");
-		Utility.GoToSleep(2000);
-		if(HomeLoanMortgageRates.fn_hasRateTable()&&
-				HomeLoanMortgageRates.fn_hasToolTip() && 
-				HomeLoanMortgageRates.fn_hasArticles()){
-			String prev_value=HomeLoanMortgageRates.fn_MonthlyRepaymentBeforeUpdate();
-			Utility.GoToSleep(3000);
-			HomeLoanMortgageRates.fn_ChangeBorrowingAmount();
-			//WebDriverWait wait = new WebDriverWait(BaseClass.getDriver(),5);
-			String updated_value=HomeLoanMortgageRates.fn_MonthlyRepaymentAfterUpdate();
-			if(Utility.fn_CompareTwocollectionvalues(prev_value, updated_value)){
-				BaseClass.logger.log(LogStatus.INFO, "Updated value is greater then prev value!!!");
-				HomeLoanMortgageRates.fn_ClickOnPagination("100");
-				Utility.GoToSleep(1000);
-				//   HomeLoanMortgageRates.fn_Verfiy_AdvertisedRateText("Variable");
-				HomeLoanMortgageRates.fn_ClickOnInterestRateChkBox("Variable");
-				if(HomeLoanMortgageRates.fn_Verfiy_AdvertisedRateText("Variable")){
-					BaseClass.logger.log(LogStatus.FAIL, "Except variables,Other AdvertisedrateText is also getting displayed!!!");
-					Assert.assertTrue(false);
-				}
-				else{
-					Assert.assertTrue(true);
-					BaseClass.logger.log(LogStatus.PASS, "Excepted values are getting displayed after filter!!!");
-				}
-			}
-			else{
-				BaseClass.logger.log(LogStatus.INFO, "New values are not greater then older value!!!");
-				Assert.assertTrue(false);
-
-			}
-		}else{
-			BaseClass.logger.log(LogStatus.FAIL, "RateTable,ToolTips& Articles are not getting displayed!!!");  
-			Assert.assertTrue(false);
-		}
-	}
-
+	
 }
