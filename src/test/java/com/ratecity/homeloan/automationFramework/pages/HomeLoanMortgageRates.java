@@ -86,26 +86,11 @@ public class HomeLoanMortgageRates {
 		if(Utility.isElementPresentAndDisplay(new RespositoryParser()
 				.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"))){
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : CompareWithBig4Button button is visible");
-			/*FluentWait< WebDriver> fWait = new FluentWait<WebDriver>(BaseClass.getDriver())
-					.withTimeout(10,TimeUnit.SECONDS)
-					.pollingEvery(2, TimeUnit.SECONDS)
-					.ignoring(NoSuchElementException.class);
-			fWait.until(new Function<WebDriver,WebElement>() {
-				public WebElement apply(WebDriver driver){
-					try {
-						element=BaseClass.getDriver().findElement(new RespositoryParser()
-								.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
-						return element;
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return null;
-				}
-			});*/
-			element = BaseClass.getDriver().findElement(new RespositoryParser()
+			element = Utility.fluentWait(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
-			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
+/*			element = BaseClass.getDriver().findElement(new RespositoryParser()
+					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
+*/			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
 			((JavascriptExecutor) BaseClass.getDriver()).executeScript(js, element);
 		    Utility.scrollToElement(element);
 			Utility.GoToSleep(1000);

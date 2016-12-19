@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
@@ -23,7 +24,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
+import com.google.common.base.Function;
 import com.ratecity.homeloan.automationFramework.pages.HomeLoanMortgageRates;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -450,6 +454,25 @@ public class Utility {
 		else return true;
 	}
 	
-	
+	/**
+	 * 
+	 * @param locator
+	 * @return
+	 */
+	public static WebElement fluentWait(final By locator){
+	    Wait<WebDriver> wait = new FluentWait<WebDriver>(BaseClass.getDriver())
+	        .withTimeout(30, TimeUnit.SECONDS)
+	        .pollingEvery(5, TimeUnit.SECONDS)
+	        .ignoring(NoSuchElementException.class);
+
+	    WebElement element = wait.until(
+	        new Function<WebDriver, WebElement>() {
+	            public WebElement apply(WebDriver driver) {
+	                return driver.findElement(locator);
+	            }
+	        }
+	    );
+	    return element;
+	};
 }
 
