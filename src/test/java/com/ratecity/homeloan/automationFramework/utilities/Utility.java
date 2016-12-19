@@ -118,7 +118,7 @@ public class Utility {
 	public static boolean fn_CompareTwocollectionvalues(String prev_value,String updated_value ) throws IOException{
 		boolean flag  = false;
 		if(Integer.parseInt(fn_ModifyString(prev_value))
-				< Integer.parseInt(fn_ModifyString(updated_value))){
+				<= Integer.parseInt(fn_ModifyString(updated_value))){
 			flag=true;
 		}else{
 			updated_value=HomeLoanMortgageRates.fn_MonthlyRepaymentAfterUpdate(); 

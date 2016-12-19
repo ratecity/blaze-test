@@ -20,7 +20,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 
 
 
-/*	@Test(priority=1,alwaysRun=true)
+	@Test(priority=1,alwaysRun=true)
 	public void HomeLoanTest01_ToVerifyTopLinksAreWorking() throws Exception{
 		System.out.println("*************From ToVerifyTopLinksAreWorking****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopLinks");
@@ -141,7 +141,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			logger.log(LogStatus.FAIL,"HomeLoan page is not landed Successfully" );
 			Assert.assertTrue(false, "HomeLoan page is not landed successfully");
 		}
-	}*/
+	}
 	@Test(priority=9,alwaysRun=true)
 	public void HomeLoanTest09_ToVerifyEmbedButtonFunctionality() throws Exception{
 		System.out.println("*************ToVerifyEmbedButtonFunctionality****************_");
@@ -157,7 +157,7 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Embed Window is not displayed");
 		}
 	}
-	/*@Test(priority=10,alwaysRun=true)
+	@Test(priority=10,alwaysRun=true)
 	public void HomeLoanTest10_ToVerifyTopMenuSubMenuisDisplayed()throws Exception{
 		System.out.println("*************ToVerifyTopMenuSubMenuisDisplayed****************_");
 		logger=report.startTest("HomeLoanLandingPage_VerifyTopMenuSubMenuisDisplayed");
@@ -252,4 +252,4 @@ public class HomeLoan_LandingPage_Test extends BaseClass {
 			BaseClass.logger.log(LogStatus.FAIL,"Issue with About Us link");
 		}
 	}
-*/}
+}
