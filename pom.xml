@@ -28,50 +28,93 @@
 			<artifactId>testng</artifactId>
 			<version>6.9.10</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+		<!-- https://mvnrepository.com/artifact/org.no-hope/slf4j-logging -->
+		<dependency>
+			<groupId>org.no-hope</groupId>
+			<artifactId>slf4j-logging</artifactId>
+			<version>0.2.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server</artifactId>
-			<version>2.51.0</version>
+			<artifactId>selenium-java</artifactId>
+			<version>2.53.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.relevantcodes</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>2.41.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-chrome-driver</artifactId>
-			<version>2.53.1</version>
-		</dependency>
-
 	</dependencies>
-	<profiles>
-		<profile>
-			<id>selenium-tests</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.12.4</version>
+
+	<build>
+		<plugins>
+			<!-- Suirefire plugin to run xml files -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
+				<version>2.18.1</version> <configuration> <suiteXmlFiles> TestNG suite XML 
+				files <suiteXmlFile>SendEmail.xml</suiteXmlFile> </suiteXmlFiles> </configuration> 
+				</plugin> -->
+			<!-- Post-Man plugin -->
+			<plugin>
+				<groupId>ch.fortysix</groupId>
+				<artifactId>maven-postman-plugin</artifactId>
+				<executions>
+					<execution>
+
+						<id>send a mail</id>
+						<phase>test</phase>
+						<goals>
+							<goal>send-mail</goal>
+						</goals>
+						<inherited>true</inherited>
+
 						<configuration>
-							<suiteXmlFiles>
-								<suiteXmlFile>TestNG.xml</suiteXmlFile>
-							</suiteXmlFiles>
+
+							<from>testRateCity@gmail.com</from>
+							<subject>Test Automation Report</subject>
+							<htmlMessageFile>src/test/resources/MailContent.html</htmlMessageFile>
+							<failonerror>true</failonerror>
+							<mailhost>smtp.gmail.com</mailhost>
+							<mailport>465</mailport>
+							<mailssl>true</mailssl>
+							<mailAltConfig>true</mailAltConfig>
+							<!-- Email Authentication(USername and Password) -->
+							<mailuser>testRateCity@gmail.com</mailuser>
+							<mailpassword>Qwerty@123#</mailpassword>
+							<receivers>
+								<receiver>Deepak.gupta@tothenew.com</receiver>
+							</receivers>
+							<fileSets>
+								<fileSet>
+									<!-- Report directory Path -->
+									<directory>${basedir}/Reports</directory>
+									<includes>
+										<include>**/*.html</include>
+										<include>**/*.jpeg</include>
+									</includes>
+									<!-- Use Regular Expressions like **/*.html if you want all the 
+										html files to send -->
+								</fileSet>
+							</fileSets>
 						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<!-- TestNG suite XML files -->
+						<suiteXmlFile>TestNG.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<testErrorIgnore>true</testErrorIgnore>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
 
 </project>

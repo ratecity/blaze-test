@@ -2,9 +2,16 @@ package com.ratecity.homeloan.automationFramework.pages;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import com.google.common.base.Function;
 import com.ratecity.homeloan.automationFramework.utilities.BaseClass;
 import com.ratecity.homeloan.automationFramework.utilities.RespositoryParser;
 import com.ratecity.homeloan.automationFramework.utilities.Utility;
@@ -27,14 +34,14 @@ public class HomeLoanMortgageRates {
 	}
 	
 	public static void fn_ClickOnCompareCheckbox(int value)throws Exception{
-	
+	    Utility.GoToSleep(2000);
 		List<WebElement> we =  BaseClass.getDriver().findElements(new RespositoryParser().
 				getobjectLocator("HomeLoan.MortgageRate"));
 		for (int i=0;i<value;i++) {
 			Utility.scrollToElement(we.get(i));
 			Utility.selectcheckbox(we.get(i));
-			//we.get(i).click();
-			Utility.GoToSleep(1000);
+			//  we.get(i).click();
+			Utility.GoToSleep(2000);
 		}
 	}
 	public static boolean fn_IsCompareCheckBoxSelected(int value) throws Exception{
@@ -58,8 +65,15 @@ public class HomeLoanMortgageRates {
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : Compare button is visible");
 			element =  BaseClass.getDriver().findElement(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareButton"));
-			Utility.clickAndWait(element, 1000);
+			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
+			((JavascriptExecutor) BaseClass.getDriver()).executeScript(js, element);
+			Utility.scrollToElement(element);
+			Utility.GoToSleep(1000);
+			element.click();
+			//Utility.clickAndWait(element, 1000);
 			return new HomeLoanComparisonpage();
+		}else{
+			System.out.println("****************Compare Button is not visible***************");
 		}
 		return null;
 	}
@@ -72,10 +86,19 @@ public class HomeLoanMortgageRates {
 		if(Utility.isElementPresentAndDisplay(new RespositoryParser()
 				.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"))){
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>ClickOnCompareButton : CompareWithBig4Button button is visible");
-			element = BaseClass.getDriver().findElement(new RespositoryParser()
+			element = Utility.fluentWait(new RespositoryParser()
 					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
-					Utility.clickAndWait(element,1000);
+/*			element = BaseClass.getDriver().findElement(new RespositoryParser()
+					.getobjectLocator("HomeLoan.MortgageRate.CompareWithBig4Button"));
+*/			String js = "arguments[0].style.height='auto'; arguments[0].style.visibility='visible';";
+			((JavascriptExecutor) BaseClass.getDriver()).executeScript(js, element);
+		    Utility.scrollToElement(element);
+			Utility.GoToSleep(1000);
+			element.click();
+				//	Utility.clickAndWait(element,1000);
 					return new HomeLoanComparisonpage();
+		}else{
+			System.out.println("****************Compare Big 4 Button is  not visible***************");
 		}
 		return null;
 	}
@@ -142,9 +165,15 @@ public class HomeLoanMortgageRates {
 
 	}
 
-	public static String fn_MonthlyRepayment() throws IOException{
+	public static String fn_MonthlyRepaymentBeforeUpdate() throws IOException{
 		List<WebElement> list  = BaseClass.getDriver().findElements(By.cssSelector("td[class*='monthlyRepayment']"));
 		return list.get(0).getText();
+
+	}
+	
+	public static String fn_MonthlyRepaymentAfterUpdate() throws IOException{
+		List<WebElement> list1  = BaseClass.getDriver().findElements(By.cssSelector("td[class*='monthlyRepayment']"));
+		return list1.get(0).getText();
 
 	}
 
@@ -201,15 +230,17 @@ public class HomeLoanMortgageRates {
 		boolean flag = false;
        List<WebElement> Ad_RateText = BaseClass.getDriver().findElements(new RespositoryParser().
 					getobjectLocator("HomeLoan.MortgageRate.AdvertisedRateText"));
-     /*  for (WebElement webElement : Ad_RateText) {
-		System.out.println("Value is : " + webElement.getText());
-	}*/
        for (WebElement webElement : Ad_RateText) {
+    	   System.out.println("^^^^^^^^^^^^^^^^"+webElement.getText());
     	   Utility.GoToSleep(3000);
 		if(!webElement.getText().equalsIgnoreCase(textToBeFound)){
+			if(!webElement.getText().contains("Intro")){
+				flag=true;
+				continue;
+			}
 			Utility.scrollToElement(webElement);
 			Utility.highlightElementBorder(webElement);
-			flag=true;
+			flag=false;
 			break;
 		}
 	  }
@@ -228,7 +259,7 @@ public class HomeLoanMortgageRates {
 			ele = BaseClass.getDriver().findElement(new RespositoryParser().
 					getobjectLocator("HomeLoan.MortgageRate.InterestRate_VariableChkBox"));
 			Utility.selectcheckbox(ele);
-			Utility.GoToSleep(2000);
+			Utility.GoToSleep(3000);
 			BaseClass.logger.log(LogStatus.INFO,"INTO METHOD==>fn_ClickOnInterestRateChkBox : Successfully Clicked on Variable CheckBox!!");
  		 }else if(chkboxtype.equalsIgnoreCase("Fixed - 1 year")){
  			ele = BaseClass.getDriver().findElement(new RespositoryParser().
