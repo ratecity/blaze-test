@@ -21,8 +21,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class HomeLoanMortgageRates {
 	 
 	private static WebElement element=null;
-	
-	
+
 	
 	public static boolean fn_verifytitle(){
 		
