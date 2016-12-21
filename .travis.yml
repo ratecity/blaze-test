@@ -16,6 +16,7 @@ before_script:
 notifications:
   email:
     recipients:
-      - deepak.gupta@tothenew.com   
+      - deepak.gupta@tothenew.com  
+      - deepak3991@gmail.com  
     on_success: always
     on_failure: always
