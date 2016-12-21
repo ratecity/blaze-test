@@ -17,6 +17,6 @@ notifications:
   email:
     recipients:
       - deepak.gupta@tothenew.com  
-      - deepak3991@gmail.com  
+      - pravin.mahajan@ratecity.com.au   
     on_success: always
     on_failure: always
