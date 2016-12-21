@@ -16,6 +16,7 @@ before_script:
 notifications:
   email:
     recipients:
-      - deepak.gupta@tothenew.com   
+      - deepak.gupta@tothenew.com  
+      - pravin.mahajan@ratecity.com.au   
     on_success: always
     on_failure: always
